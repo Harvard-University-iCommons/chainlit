@@ -9,7 +9,7 @@ generator client {
 }
 
 model User {
-  id            Int            @id @default(autoincrement())
+  id            String            @id @default(uuid())
   createdAt     DateTime       @default(now())
   email         String?        @unique
   name          String?
@@ -22,7 +22,7 @@ model Conversation {
   createdAt DateTime  @default(now())
   messages  Message[]
   elements  Element[]
-  authorId  Int?
+  authorId  String?
   author    User?     @relation(fields: [authorId], references: [id])
 }
 
