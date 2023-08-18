@@ -126,9 +126,7 @@ async def connection_successful(sid):
     if context.session.restored:
         return
 
-    if isinstance(
-        context.session.auth_client, CloudAuthClient
-    ) and config.project.database in [
+    if config.project.database in [
         "local",
         "custom",
     ]:
