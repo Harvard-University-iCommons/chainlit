@@ -130,7 +130,9 @@ async def connection_successful(sid):
         "local",
         "custom",
     ]:
-        await context.session.db_client.create_user(session.auth_client.user_infos)
+        await context.session.db_client.create_user(
+            context.session.auth_client.user_infos
+        )
 
     if config.code.on_chat_start:
         """Call the on_chat_start function provided by the developer."""
