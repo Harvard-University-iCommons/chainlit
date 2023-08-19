@@ -24,14 +24,14 @@ def db_push():
 
 
 def init_local_db():
-    use_local_db = config.project.database == "local"
+    use_local_db = config.project.database in ["local", "custom"]
     if use_local_db:
         if not os.path.exists(config.project.local_db_path):
             db_push()
 
 
 def migrate_local_db():
-    use_local_db = config.project.database == "local"
+    use_local_db = config.project.database in ["local", "custom"]
     if use_local_db:
         if os.path.exists(config.project.local_db_path):
             db_push()
