@@ -1,15 +1,19 @@
 import os
-from pathlib import Path
 
 from chainlit.config import PACKAGE_ROOT, config, config_dir
 from chainlit.logger import logger
 
 if os.environ.get("SCHEMA_PATH"):
     SCHEMA_PATH = os.environ.get("SCHEMA_PATH")
+    logger.info(f"loading prisma schema from SCHEMA_PATH env var: {SCHEMA_PATH}")
 elif os.path.isfile(os.path.join(config_dir, "schema.prisma")):
     SCHEMA_PATH = os.path.join(config_dir, "schema.prisma")
+    logger.info(f"loading prisma schema from the .chainlit config dir: {SCHEMA_PATH}")
 else:
     SCHEMA_PATH = os.path.join(PACKAGE_ROOT, "db/prisma/schema.prisma")
+    logger.info(
+        f"loading the default prisma schema from the chainlit package: {SCHEMA_PATH}"
+    )
 
 
 def db_push():
