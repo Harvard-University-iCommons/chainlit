@@ -1,10 +1,13 @@
 import os
+from pathlib import Path
 
-from chainlit.config import PACKAGE_ROOT, config
+from chainlit.config import PACKAGE_ROOT, config, config_dir
 from chainlit.logger import logger
 
 if os.environ.get("SCHEMA_PATH"):
     SCHEMA_PATH = os.environ.get("SCHEMA_PATH")
+elif os.path.isfile(os.path.join(config_dir, "schema.prisma")):
+    SCHEMA_PATH = os.path.join(config_dir, "schema.prisma")
 else:
     SCHEMA_PATH = os.path.join(PACKAGE_ROOT, "db/prisma/schema.prisma")
 
