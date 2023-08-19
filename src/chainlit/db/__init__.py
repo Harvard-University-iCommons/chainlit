@@ -3,7 +3,10 @@ import os
 from chainlit.config import PACKAGE_ROOT, config
 from chainlit.logger import logger
 
-SCHEMA_PATH = os.path.join(PACKAGE_ROOT, "db/prisma/schema.prisma")
+if os.environ.get("SCHEMA_PATH"):
+    SCHEMA_PATH = os.environ.get("SCHEMA_PATH")
+else:
+    SCHEMA_PATH = os.path.join(PACKAGE_ROOT, "db/prisma/schema.prisma")
 
 
 def db_push():
