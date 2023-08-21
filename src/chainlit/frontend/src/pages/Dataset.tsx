@@ -5,9 +5,11 @@ import Conversation from 'components/organisms/dataset';
 
 export default function Dataset() {
   return (
-    <Page>
-      <Head title="dataset" desccription="dataset" />
-      <Conversation />
-    </Page>
+    <>
+      <Head title="dataset" description="dataset" />
+      <Page>
+        <Conversation />
+      </Page>
+    </>
   );
 }

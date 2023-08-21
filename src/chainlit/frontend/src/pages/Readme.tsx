@@ -7,11 +7,13 @@ import WelcomeScreen from 'components/organisms/chat/welcomeScreen';
 
 export default function Readme() {
   return (
-    <Page>
+    <>
       <Head title="Readme" description="Readme" />
-      <Box sx={{ px: 2 }}>
-        <WelcomeScreen />
-      </Box>
-    </Page>
+      <Page>
+        <Box sx={{ px: 2 }}>
+          <WelcomeScreen />
+        </Box>
+      </Page>
+    </>
   );
 }
