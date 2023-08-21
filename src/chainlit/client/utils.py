@@ -6,6 +6,7 @@ from starlette.datastructures import Headers
 from chainlit.client.base import BaseAuthClient, BaseDBClient, UserDict
 from chainlit.client.cloud import CloudAuthClient, CloudDBClient
 from chainlit.client.local import LocalAuthClient, LocalDBClient
+from chainlit.client.postgres import PostgresClient
 from chainlit.config import config
 
 
@@ -63,6 +64,15 @@ async def get_db_client(
             handshake_headers, request_headers, user_infos
         )
         return custom_db_client
+    elif config.project.database == "postgres":
+        postgres_client = PostgresClient(
+            project_id=config.project.id, user_infos=user_infos
+        )
+
+        # Init the project and user tables if needed
+        await postgres_client.init()
+
+        return postgres_client
 
     raise ValueError("Unknown database type")
 
@@ -82,7 +92,9 @@ async def get_db_client_from_request(
     # Get the auth client
     auth_client = await get_auth_client(None, request.headers)
 
+    user_infos = await auth_client.get_user_infos()
+
     # Get the db client
-    db_client = await get_db_client(None, request.headers, auth_client.user_infos)
+    db_client = await get_db_client(None, request.headers, user_infos)
 
     return db_client

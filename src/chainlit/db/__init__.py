@@ -15,8 +15,12 @@ else:
         f"loading the default prisma schema from the chainlit package: {SCHEMA_PATH}"
     )
 
+POSTGRES_SCHEMA_PATH = os.path.join(
+    PACKAGE_ROOT, "client/postgres/prisma/schema.prisma"
+)
 
-def db_push():
+
+def local_db_push():
     from importlib import reload
 
     import prisma
@@ -34,16 +38,39 @@ def init_local_db():
     use_local_db = config.project.database in ["local", "custom"]
     if use_local_db:
         if not os.path.exists(config.project.local_db_path):
-            db_push()
+            local_db_push()
 
 
 def migrate_local_db():
     use_local_db = config.project.database in ["local", "custom"]
     if use_local_db:
         if os.path.exists(config.project.local_db_path):
-            db_push()
+            local_db_push()
             logger.info(f"Local db migrated")
         else:
             logger.info(f"Local db does not exist, skipping migration")
+    else:
+        logger.info(f"Database setting must be set to 'local' to migrate local db")
+
+
+def postgres_db_push():
+    from importlib import reload
+
+    import chainlit.client.postgres.prisma.app
+    from chainlit.client.postgres.prisma.app.cli.prisma import run
+
+    args = ["db", "push", f"--schema={POSTGRES_SCHEMA_PATH}"]
+    env = {"POSTGRES_DATABASE_URL": os.environ.get("POSTGRES_DATABASE_URL")}
+    run(args, env=env)
+
+    # Similar initialization than local_db_push
+    reload(chainlit.client.postgres.prisma.app)
+
+
+def migrate_postgres_db():
+    use_postgres_db = config.project.database == "postgres"
+    if use_postgres_db:
+        postgres_db_push()
+        logger.info(f"Postgres db migrated")
     else:
         logger.info(f"Database setting must be set to 'local' to migrate local db")

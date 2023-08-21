@@ -62,6 +62,13 @@ async def lifespan(app: FastAPI):
         register(client)
         await client.connect()
 
+    if config.project.database == "postgres":
+        from chainlit.client.postgres.prisma.app import Client, register
+
+        client = Client()
+        register(client)
+        await client.connect()
+
     watch_task = None
     stop_event = asyncio.Event()
 
@@ -103,7 +110,7 @@ async def lifespan(app: FastAPI):
     try:
         yield
     finally:
-        if config.project.database in ["local", "custom"]:
+        if config.project.database in ["local", "custom", "postgres"]:
             await client.disconnect()
         if watch_task:
             try:

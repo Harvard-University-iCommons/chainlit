@@ -94,11 +94,12 @@ async def connect(sid, environ, auth):
         auth_client = await get_auth_client(
             handshake_headers=environ, request_headers=request_headers
         )
+        user_infos = await auth_client.get_user_infos()
         if config.project.database:
             db_client = await get_db_client(
                 handshake_headers=environ,
                 request_headers=request_headers,
-                user_infos=auth_client.user_infos,
+                user_infos=user_infos,
             )
         user_env = load_user_env(user_env)
     except ConnectionRefusedError as e:
@@ -129,10 +130,10 @@ async def connection_successful(sid):
     if config.project.database in [
         "local",
         "custom",
+        "postgres",
     ]:
-        await context.session.db_client.create_user(
-            context.session.auth_client.user_infos
-        )
+        user_infos = await context.session.auth_client.get_user_infos()
+        await context.session.db_client.create_user(user_infos)
 
     if config.code.on_chat_start:
         """Call the on_chat_start function provided by the developer."""

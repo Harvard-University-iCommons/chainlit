@@ -9,6 +9,7 @@ repository = "https://github.com/Chainlit/chainlit"
 readme = "README.md"
 exclude = [
     "**/frontend/**/*",
+    "**/client/postgres/prisma/app/**/*",
 ]
 include = [
     "**/frontend/dist/**/*",

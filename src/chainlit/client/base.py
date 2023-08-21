@@ -42,7 +42,7 @@ class MessageDict(TypedDict):
 
 
 class UserDict(TypedDict):
-    id: int
+    id: str
     name: Optional[str]
     email: Optional[str]
     role: str
