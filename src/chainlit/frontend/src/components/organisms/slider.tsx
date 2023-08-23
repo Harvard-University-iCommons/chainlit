@@ -26,7 +26,12 @@ const _Slider = ({
       tooltip={tooltip}
       notificationsCount={sliderProps.value?.toString()}
     >
-      <StyledSlider {...sliderProps} id={id} name={id} aria-label={label} />
+      <StyledSlider
+        {...sliderProps}
+        id={id}
+        name={id}
+        aria-label={label + ' slider'}
+      />
     </InputStateHandler>
   );
 };

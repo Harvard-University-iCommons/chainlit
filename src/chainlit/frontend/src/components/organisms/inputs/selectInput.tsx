@@ -99,6 +99,12 @@ export default function SelectInput({
         onChange={onChange}
         size={size}
         disabled={disabled}
+        // check if value is a string so we dont create aria-label with numbers
+        aria-label={
+          (typeof value == 'number'
+            ? items?.find((item) => item.value === value)?.label
+            : value) + ' list box'
+        }
         renderValue={() =>
           (renderLabel && renderLabel()) ||
           `${items?.find((item) => item.value === value)?.label}`
