@@ -6,7 +6,7 @@ import Conversation from 'components/organisms/dataset';
 export default function Dataset() {
   return (
     <>
-      <Head title="dataset" description="dataset" />
+      <Head title="History" description="History" />
       <Page>
         <Conversation />
       </Page>

@@ -51,7 +51,7 @@ export default function UserMenu({ anchorEl, open, handleClose }: Props) {
       }}
     >
       <ListItemIcon>
-        <SettingsIcon fontSize="small" />
+        <SettingsIcon fontSize="small" aria-label="Settings Menu" />
       </ListItemIcon>
       <ListItemText>Settings</ListItemText>
       <Typography variant="body2" color="text.secondary">

@@ -100,7 +100,7 @@ const Input = ({ onSubmit, onReply }: Props) => {
           color="inherit"
           onClick={() => setChatSettings((old) => ({ ...old, open: true }))}
         >
-          <TuneIcon />
+          <TuneIcon aria-label="Filter Menu" />
         </IconButton>
       )}
       <HistoryButton onClick={onHistoryClick} />
@@ -109,7 +109,7 @@ const Input = ({ onSubmit, onReply }: Props) => {
 
   const endAdornment = (
     <IconButton disabled={disabled} color="inherit" onClick={() => submit()}>
-      <SendIcon />
+      <SendIcon aria-label="Send Message" />
     </IconButton>
   );
 

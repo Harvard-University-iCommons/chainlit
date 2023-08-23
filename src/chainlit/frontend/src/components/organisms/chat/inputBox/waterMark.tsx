@@ -13,6 +13,7 @@ export default function WaterMark() {
           alignItems: 'center',
           textDecoration: 'none'
         }}
+        aria-label="Built with link"
       >
         <Typography fontSize="12px" color="text.secondary">
           Built with
