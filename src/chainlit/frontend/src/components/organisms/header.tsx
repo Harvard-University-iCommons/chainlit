@@ -44,7 +44,8 @@ function NavItem({ to, label }: INavItem) {
       sx={{
         textTransform: 'none',
         color: 'text.secondary',
-        '&:hover': {
+        '&:focus, &:hover, &.Mui-active, &.Mui-focusVisible': {
+          outline: '2px solid crimson',
           background: 'transparent'
         }
       }}

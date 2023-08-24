@@ -40,6 +40,11 @@ export default function NewChatButton() {
         variant="outlined"
         onClick={handleClickOpen}
         startIcon={<AddIcon />}
+        sx={{
+          '&:focus, &:hover, &.Mui-active, &.Mui-focusVisible': {
+            outline: '2px solid crimson'
+          }
+        }}
       >
         New Chat
       </AccentButton>
