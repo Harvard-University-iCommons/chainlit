@@ -58,13 +58,13 @@ export default function SettingsModal() {
             <ListItemText id="list-expand-all" primary="Expand Messages" />
             <Box>
               <Switch
-                id="switch-expand-all"
+                id="switch-expand-all-messages"
                 onChange={() =>
                   setSettings((old) => ({ ...old, expandAll: !old.expandAll }))
                 }
                 checked={settings.expandAll}
                 inputProps={{
-                  'aria-labelledby': 'switch-expand-all'
+                  'aria-label': 'switch expand all messages'
                 }}
               />
             </Box>
