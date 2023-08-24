@@ -16,7 +16,7 @@ export default function OpenConversationButton({ conversationId }: Props) {
       size="small"
       color="primary"
     >
-      <VisibilityIcon aria-label="view conversation" />
+      <VisibilityIcon aria-label={`view conversation ${conversationId}`} />
     </IconButton>
   );
 }
