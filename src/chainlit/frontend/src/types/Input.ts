@@ -8,6 +8,7 @@ interface IInput {
   notificationsCount?: number | string;
   size?: 'small' | 'medium';
   tooltip?: string;
+  type?: string;
 }
 
 export type { IInput };

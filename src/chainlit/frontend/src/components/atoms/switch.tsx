@@ -55,13 +55,21 @@ const StyledSwitch = styled((props: MSwitchProps) => (
   const isDarkMode = theme.palette.mode === 'dark';
 
   return {
+    '&:focus, &:hover, &.Mui-active, &.Mui-focusVisible': {
+      outline: '2px solid crimson',
+      borderRadius: 26 / 2
+    },
     width: 40,
     height: 24,
     padding: 0,
+    overflow: 'visible',
     '& .MuiSwitch-switchBase': {
       margin: 0,
       padding: '4px',
       transitionDuration: '300ms',
+      '&:focus, &:hover, &.Mui-active, &.Mui-focusVisible': {
+        outline: '2px solid crimson'
+      },
       '&.Mui-checked': {
         transform: 'translateX(16px)',
         color: '#fff',

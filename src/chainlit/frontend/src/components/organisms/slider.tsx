@@ -25,12 +25,13 @@ const _Slider = ({
       label={label}
       tooltip={tooltip}
       notificationsCount={sliderProps.value?.toString()}
+      type="slider"
     >
       <StyledSlider
         {...sliderProps}
         id={id}
         name={id}
-        aria-label={label + ' slider'}
+        aria-label={label + ' slider thumb'}
       />
     </InputStateHandler>
   );
@@ -47,13 +48,18 @@ const StyledSlider = styled(Slider)(({ theme }) => {
       border: 'none',
       color: grey[500]
     },
+    '& .MuiSlider-root, &:focus, &:hover, &.Mui-focusVisible': {
+      // boxShadow: 'inherit'
+      outline: '2px solid crimson'
+    },
     '& .MuiSlider-thumb': {
       height: 15,
       width: 15,
       backgroundColor: isLightMode ? grey[600] : 'white',
       border: `4px solid ${isLightMode ? grey[300] : grey[800]}`,
-      '&:focus, &:hover, &.Mui-active, &.Mui-focusVisible': {
-        boxShadow: 'inherit'
+      '&:focus, &:hover, &.Mui-active, &.Mui-focusVisible, & .MuiSlider-root': {
+        boxShadow: 'inherit',
+        outline: '2px solid crimson'
       },
       '&:before': {
         display: 'none'
