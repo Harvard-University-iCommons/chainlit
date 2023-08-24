@@ -24,7 +24,7 @@ export default function UserButton() {
         aria-controls={open ? 'account-menu' : undefined}
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
-        aria-label="User Account Menu"
+        aria-label="Options Menu"
       >
         <UserAvatar />
       </IconButton>

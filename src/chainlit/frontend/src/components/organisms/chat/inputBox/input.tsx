@@ -99,8 +99,9 @@ const Input = ({ onSubmit, onReply }: Props) => {
           disabled={disabled}
           color="inherit"
           onClick={() => setChatSettings((old) => ({ ...old, open: true }))}
+          aria-label="Settings Panel"
         >
-          <TuneIcon aria-label="Filter Menu" />
+          <TuneIcon />
         </IconButton>
       )}
       <HistoryButton onClick={onHistoryClick} />

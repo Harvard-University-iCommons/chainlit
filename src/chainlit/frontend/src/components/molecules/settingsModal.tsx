@@ -64,7 +64,7 @@ export default function SettingsModal() {
                 }
                 checked={settings.expandAll}
                 inputProps={{
-                  'aria-label': 'switch expand all messages'
+                  'aria-label': 'Expand Messages'
                 }}
               />
             </Box>
