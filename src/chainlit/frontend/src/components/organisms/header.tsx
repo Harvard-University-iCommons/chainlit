@@ -1,6 +1,6 @@
 import { grey } from 'palette';
 import { useRef, useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 
 import MenuIcon from '@mui/icons-material/Menu';
