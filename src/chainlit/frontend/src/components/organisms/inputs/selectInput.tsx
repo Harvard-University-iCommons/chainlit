@@ -45,6 +45,7 @@ export const renderMenuItem = ({
   <MenuItem
     value={item.value}
     key={`select-${index}`}
+    aria-label={item.label}
     sx={{
       display: 'flex',
       justifyContent: 'space-between',

@@ -25,14 +25,8 @@ const _Slider = ({
       label={label}
       tooltip={tooltip}
       notificationsCount={sliderProps.value?.toString()}
-      inputType="slider"
     >
-      <StyledSlider
-        {...sliderProps}
-        id={id}
-        name={id}
-        aria-label={label + ' slider thumb'}
-      />
+      <StyledSlider {...sliderProps} id={id} name={id} aria-label={label} />
     </InputStateHandler>
   );
 };
