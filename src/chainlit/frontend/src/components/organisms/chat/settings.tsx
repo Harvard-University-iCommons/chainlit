@@ -64,7 +64,7 @@ export default function ChatSettingsModal() {
         }
       }}
     >
-      <DialogTitle id="alert-dialog-title">{'Settings panel'}</DialogTitle>
+      <DialogTitle id="alert-dialog-title">{'Large Language Model Settings'}</DialogTitle>
       <DialogContent>
         <Box
           sx={{
