@@ -25,7 +25,7 @@ const _Slider = ({
       label={label}
       tooltip={tooltip}
       notificationsCount={sliderProps.value?.toString()}
-      type="slider"
+      inputType="slider"
     >
       <StyledSlider
         {...sliderProps}

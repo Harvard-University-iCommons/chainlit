@@ -19,7 +19,7 @@ export default function InputStateHandler(
     label,
     notificationsCount,
     tooltip,
-    type
+    inputType
   } = props;
 
   return (
@@ -35,7 +35,9 @@ export default function InputStateHandler(
       <FormControl
         error={hasError}
         fullWidth
-        aria-label={label && type ? `${label} ${type}` : label || type}
+        aria-label={
+          label && inputType ? `${label} ${inputType}` : label || inputType
+        }
       >
         {children}
         {description ? <FormHelperText>{description}</FormHelperText> : null}
