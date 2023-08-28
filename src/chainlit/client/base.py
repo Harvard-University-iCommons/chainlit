@@ -58,6 +58,7 @@ class ElementDict(TypedDict):
     size: Optional[ElementSize]
     language: Optional[str]
     forIds: Optional[List[str]]
+    alt: Optional[str]
 
 
 class ConversationDict(TypedDict):

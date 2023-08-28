@@ -1,5 +1,6 @@
 import { useRecoilState } from 'recoil';
 
+import CloseIcon from '@mui/icons-material/Close';
 import DarkModeOutlined from '@mui/icons-material/DarkModeOutlined';
 import EmojiObjectsIcon from '@mui/icons-material/EmojiObjects';
 import ExpandIcon from '@mui/icons-material/Expand';
@@ -7,6 +8,7 @@ import {
   Box,
   Dialog,
   DialogContent,
+  IconButton,
   List,
   ListItem,
   ListItemIcon,
@@ -20,11 +22,11 @@ import { settingsState } from 'state/settings';
 
 export default function SettingsModal() {
   const [settings, setSettings] = useRecoilState(settingsState);
-
+  const handleClose = () => setSettings((old) => ({ ...old, open: false }));
   return (
     <Dialog
       open={settings.open}
-      onClose={() => setSettings((old) => ({ ...old, open: false }))}
+      onClose={handleClose}
       id="settings-dialog"
       PaperProps={{
         sx: {
@@ -35,7 +37,19 @@ export default function SettingsModal() {
       <DialogContent>
         <List
           sx={{ width: '100%', maxWidth: 360 }}
-          subheader={<ListSubheader>Settings</ListSubheader>}
+          subheader={
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <ListSubheader>Settings</ListSubheader>
+              <IconButton
+                edge={false}
+                sx={{ ml: 'auto' }}
+                onClick={handleClose}
+                aria-label="close settings modal"
+              >
+                <CloseIcon />
+              </IconButton>
+            </div>
+          }
         >
           <ListItem sx={{ display: 'flex', gap: 2 }}>
             <ListItemIcon>
@@ -44,13 +58,13 @@ export default function SettingsModal() {
             <ListItemText id="list-expand-all" primary="Expand Messages" />
             <Box>
               <Switch
-                id="switch-expand-all"
+                id="switch-expand-all-messages"
                 onChange={() =>
                   setSettings((old) => ({ ...old, expandAll: !old.expandAll }))
                 }
                 checked={settings.expandAll}
                 inputProps={{
-                  'aria-labelledby': 'switch-expand-all'
+                  'aria-label': 'Expand Messages'
                 }}
               />
             </Box>

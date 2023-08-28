@@ -27,6 +27,7 @@ interface TElement<T> {
   conversationId?: string;
   forIds?: string[];
   url?: string;
+  alt?: string;
 }
 
 interface TMessageElement<T> extends TElement<T> {

@@ -42,6 +42,8 @@ class Element:
     for_ids: List[str] = Field(default_factory=list)
     # The language, if relevant
     language: Optional[str] = None
+    # Alt tag
+    alt: Optional[str] = None
 
     def __post_init__(self) -> None:
         trace_event(f"init {self.__class__.__name__}")
@@ -62,6 +64,7 @@ class Element:
                 "language": getattr(self, "language", None),
                 "forIds": getattr(self, "for_ids", None),
                 "conversationId": None,
+                "alt": self.alt or "",
             }
         )
         return _dict

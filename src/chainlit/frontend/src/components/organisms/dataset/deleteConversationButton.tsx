@@ -57,6 +57,7 @@ export default function DeleteConversationButton({
         size="small"
         color="error"
         onClick={handleClickOpen}
+        aria-label="delete conversation"
       >
         <DeleteOutline />
       </IconButton>

@@ -8,6 +8,11 @@ export default function AccentButton({ children, ...props }: ButtonProps) {
       <Button
         color={theme.palette.mode === 'dark' ? 'inherit' : 'primary'}
         {...props}
+        sx={{
+          '&:focus, &:hover, &.Mui-active, &.Mui-focusVisible': {
+            outline: '2px solid crimson'
+          }
+        }}
       >
         {children}
       </Button>

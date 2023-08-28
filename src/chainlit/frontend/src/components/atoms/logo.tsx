@@ -13,5 +13,5 @@ interface Props {
 export const Logo = ({ width, style }: Props) => {
   const { theme } = useRecoilValue(settingsState);
   const src = theme === 'light' ? LogoLight : LogoDark;
-  return <img src={src} style={style} width={width || 40} />;
+  return <img src={src} style={style} width={width || 40} alt="Chainlit" />;
 };

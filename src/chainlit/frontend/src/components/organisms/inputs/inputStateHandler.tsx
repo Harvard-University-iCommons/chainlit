@@ -31,7 +31,7 @@ export default function InputStateHandler(
           notificationsCount={notificationsCount}
         />
       ) : null}
-      <FormControl error={hasError} fullWidth>
+      <FormControl error={hasError} fullWidth aria-label={label}>
         {children}
         {description ? <FormHelperText>{description}</FormHelperText> : null}
       </FormControl>

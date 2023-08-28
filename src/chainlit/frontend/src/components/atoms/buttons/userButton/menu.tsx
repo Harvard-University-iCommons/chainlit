@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 
+import CloseIcon from '@mui/icons-material/Close';
 import KeyIcon from '@mui/icons-material/Key';
 import LogoutIcon from '@mui/icons-material/Logout';
 import SettingsIcon from '@mui/icons-material/Settings';
@@ -43,21 +44,35 @@ export default function UserMenu({ anchorEl, open, handleClose }: Props) {
   );
 
   const settingsItem = (
-    <MenuItem
-      key="settings"
-      onClick={() => {
-        setAppSettings((old) => ({ ...old, open: true }));
-        handleClose();
-      }}
-    >
-      <ListItemIcon>
-        <SettingsIcon fontSize="small" />
-      </ListItemIcon>
-      <ListItemText>Settings</ListItemText>
-      <Typography variant="body2" color="text.secondary">
-        S
-      </Typography>
-    </MenuItem>
+    <>
+      <MenuItem
+        key="settings"
+        onClick={() => {
+          setAppSettings((old) => ({ ...old, open: true }));
+          handleClose();
+        }}
+      >
+        <ListItemIcon>
+          <SettingsIcon fontSize="small" aria-label="Settings Menu" />
+        </ListItemIcon>
+        <ListItemText>Settings</ListItemText>
+      </MenuItem>
+      <MenuItem
+        key="close"
+        onClick={() => {
+          handleClose();
+        }}
+      >
+        <ListItemIcon>
+          <CloseIcon
+            style={{ paddingLeft: 0 }}
+            fontSize="small"
+            aria-label="close settings"
+          />
+        </ListItemIcon>
+        <ListItemText>Close</ListItemText>
+      </MenuItem>
+    </>
   );
 
   const apiKeysItem = requiredKeys && (
