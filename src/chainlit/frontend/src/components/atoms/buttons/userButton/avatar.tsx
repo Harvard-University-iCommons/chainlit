@@ -8,7 +8,7 @@ export default function UserAvatar() {
 
   if (user) {
     return (
-      <Avatar sx={{ width: 32, height: 32 }} src={user.picture || undefined} variant='square'>
+      <Avatar sx={{ width: 32, height: 32 }} src={user.picture || undefined}>
         {user.name?.[0]}
       </Avatar>
     );
