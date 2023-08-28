@@ -18,6 +18,7 @@ export default function AvatarElement({ element, author }: Props) {
           sx={{ width: 38, height: 38, mt: '-4px' }}
           alt={alt}
           src={src}
+          variant="square"
         />
       </span>
     </Tooltip>

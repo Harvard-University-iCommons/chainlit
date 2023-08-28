@@ -8,7 +8,11 @@ export default function UserAvatar() {
 
   if (user) {
     return (
-      <Avatar sx={{ width: 32, height: 32 }} src={user.picture || undefined}>
+      <Avatar
+        sx={{ width: 32, height: 32 }}
+        src={user.picture || undefined}
+        variant="square"
+      >
         {user.name?.[0]}
       </Avatar>
     );
@@ -22,7 +26,8 @@ export default function UserAvatar() {
             width: 32,
             height: 32,
             bgcolor: 'transparent',
-            color: 'inherit'
+            color: 'inherit',
+            variant: 'square'
           }}
         />
       </Box>
