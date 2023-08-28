@@ -83,6 +83,10 @@ function Nav({ hasDb, hasReadme }: NavProps) {
     tabs.push({ to: '/readme', label: 'Readme' });
   }
 
+  tabs.push({ to: 'https://huit.harvard.edu/ai-sandbox', label: 'About' });
+
+  tabs.push({ to: 'https://huit.harvard.edu/', label: 'Help' });
+
   const nav = (
     <Stack direction={matches ? 'column' : 'row'} spacing={1}>
       {tabs.map((t) => {
