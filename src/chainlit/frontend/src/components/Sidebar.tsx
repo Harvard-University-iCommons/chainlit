@@ -66,7 +66,8 @@ export default function PersistentDrawerLeft() {
         onClick={handleDrawerOpen}
         edge="start"
         sx={{
-          mb: { lg: '7rem' },
+          mb: { md: '14rem', lg: '14rem' },
+          mt: { xs: '10rem' },
           ml: '2px',
           mr: 0,
           bottom: '22rem',

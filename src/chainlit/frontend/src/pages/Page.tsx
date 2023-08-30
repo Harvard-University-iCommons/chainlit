@@ -51,7 +51,11 @@ const Page = ({ children }: Props) => {
       sx={{
         display: 'flex',
         flexDirection: 'column',
-        width: '100%'
+        width: '100%',
+        overflow: {
+          xs: 'hidden',
+          sm: 'hidden'
+        }
       }}
     >
       <Header />
