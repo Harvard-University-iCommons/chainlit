@@ -61,7 +61,7 @@ export default function PersistentDrawerLeft() {
       <CssBaseline />
       <IconButton
         color="inherit"
-        aria-label="open drawer"
+        aria-label="open sidebar"
         onClick={handleDrawerOpen}
         edge="start"
         sx={{
@@ -91,7 +91,7 @@ export default function PersistentDrawerLeft() {
         open={open}
       >
         <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
+          <IconButton onClick={handleDrawerClose} aria-label="close sidebar">
             {theme.direction === 'ltr' ? (
               <ChevronLeftIcon />
             ) : (
@@ -104,6 +104,7 @@ export default function PersistentDrawerLeft() {
           <img
             src={theme.palette.mode == 'dark' ? DarkHarvardIcon : HarvardIcon}
             alt="harvard icon"
+            style={{ width: '18rem' }}
           />
           <h1>AI Sandbox</h1>
           <h2>(Pilot Version)</h2>
