@@ -24,7 +24,7 @@ export default function inputLabel({
           sx={{
             fontWeight: 600,
             fontSize: '12px',
-            color: 'grey.500'
+            color: 'grey.800'
           }}
         >
           {label}

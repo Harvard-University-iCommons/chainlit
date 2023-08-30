@@ -83,7 +83,7 @@ export default function SearchBar() {
         onChange={(e) => _onChange(e.target.value)}
       />
       <SearchIconWrapper>
-        <IconButton onClick={clear}>
+        <IconButton onClick={clear} aria-label="clear searchbar">
           <CloseIcon />
         </IconButton>
       </SearchIconWrapper>

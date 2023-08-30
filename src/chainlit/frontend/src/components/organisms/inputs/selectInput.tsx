@@ -45,6 +45,7 @@ export const renderMenuItem = ({
   <MenuItem
     value={item.value}
     key={`select-${index}`}
+    aria-label={item.label}
     sx={{
       display: 'flex',
       justifyContent: 'space-between',
@@ -99,6 +100,7 @@ export default function SelectInput({
         onChange={onChange}
         size={size}
         disabled={disabled}
+        aria-label={label}
         renderValue={() =>
           (renderLabel && renderLabel()) ||
           `${items?.find((item) => item.value === value)?.label}`

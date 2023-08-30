@@ -99,6 +99,7 @@ const Input = ({ onSubmit, onReply }: Props) => {
           disabled={disabled}
           color="inherit"
           onClick={() => setChatSettings((old) => ({ ...old, open: true }))}
+          aria-label="Settings Panel"
         >
           <TuneIcon />
         </IconButton>
@@ -109,7 +110,7 @@ const Input = ({ onSubmit, onReply }: Props) => {
 
   const endAdornment = (
     <IconButton disabled={disabled} color="inherit" onClick={() => submit()}>
-      <SendIcon />
+      <SendIcon aria-label="Send Message" />
     </IconButton>
   );
 

@@ -4,6 +4,8 @@ import { v4 as uuidv4 } from 'uuid';
 
 import { Alert, Box } from '@mui/material';
 
+import Head from 'components/Head';
+import Sidebar from 'components/Sidebar';
 import SideView from 'components/atoms/element/sideView';
 import ErrorBoundary from 'components/atoms/errorBoundary';
 import TaskList from 'components/molecules/tasklist';
@@ -102,7 +104,20 @@ const Chat = () => {
   const tasklist = tasklistElements.at(-1);
 
   return (
-    <Box display="flex" width="100%" height="0" flexGrow={1}>
+    <Box
+      sx={{
+        width: {
+          xs: '80%',
+          md: '100%',
+          lg: '100%'
+        },
+        display: 'flex',
+        height: 0
+      }}
+      flexGrow={1}
+    >
+      <Head title="Chat" description="Chat" />
+      <Sidebar />
       <Playground />
       <ChatSettingsModal />
       <TaskList tasklist={tasklist} isMobile={false} />

@@ -153,7 +153,7 @@ export default function Playground() {
             onClick={toggleDrawer}
             sx={{ mr: '4px' }}
           >
-            <SettingsIcon />
+            <SettingsIcon aria-label="Settings Menu" />
           </IconButton>
           <IconButton edge="end" id="close-playground" onClick={handleClose}>
             <CloseIcon />

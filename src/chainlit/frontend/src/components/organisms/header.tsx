@@ -1,3 +1,4 @@
+import { grey } from 'palette';
 import { useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
@@ -9,10 +10,12 @@ import {
   Button,
   IconButton,
   Menu,
+  MenuItem,
   Stack,
   Toolbar,
   useTheme
 } from '@mui/material';
+import { Theme } from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 import RegularButton from 'components/atoms/buttons/button';
@@ -27,6 +30,11 @@ interface INavItem {
   label: string;
 }
 
+interface IMenuItem {
+  to: string;
+  label: string;
+  tabIndex: number;
+}
 function ActiveNavItem({ to, label }: INavItem) {
   return (
     <RegularButton component={Link} to={to} key={to}>
@@ -35,24 +43,51 @@ function ActiveNavItem({ to, label }: INavItem) {
   );
 }
 
+const styleOverrides = {
+  inactive: {
+    textTransform: 'none',
+    color: 'text.secondary',
+    '&:focus, &:hover, &.Mui-active, &.Mui-focusVisible': {
+      outline: '2px solid crimson',
+      background: 'transparent'
+    }
+  },
+  active: {
+    textTransform: 'none',
+    color: (theme: Theme) =>
+      theme.palette.mode === 'dark'
+        ? 'text.primary'
+        : theme.palette.primary.main,
+    background: (theme: Theme) =>
+      theme.palette.mode === 'dark' ? grey[700] : theme.palette.primary.light,
+    '&:focus, &:hover, &.Mui-active, &.Mui-focusVisible': {
+      outline: '2px solid crimson',
+      background: (theme: Theme) =>
+        theme.palette.mode === 'dark' ? grey[700] : theme.palette.primary.light
+    }
+  }
+};
+
 function NavItem({ to, label }: INavItem) {
   return (
-    <Button
-      component={Link}
-      to={to}
-      key={to}
-      sx={{
-        textTransform: 'none',
-        color: 'text.secondary',
-        '&:hover': {
-          background: 'transparent'
-        }
-      }}
-    >
+    <Button component={Link} to={to} key={to} sx={styleOverrides.inactive}>
       {label}
     </Button>
   );
 }
+
+const ActiveMenuItem = ({ to, label, tabIndex }: IMenuItem) => (
+  <MenuItem
+    component={Link}
+    key={to}
+    to={to}
+    tabIndex={tabIndex}
+    autoFocus={true}
+    sx={styleOverrides.active}
+  >
+    {label}
+  </MenuItem>
+);
 
 interface NavProps {
   hasDb?: boolean;
@@ -82,6 +117,10 @@ function Nav({ hasDb, hasReadme }: NavProps) {
   if (hasReadme) {
     tabs.push({ to: '/readme', label: 'Readme' });
   }
+
+  tabs.push({ to: 'https://huit.harvard.edu/ai-sandbox', label: 'About' });
+
+  tabs.push({ to: 'https://huit.harvard.edu/', label: 'Help' });
 
   const nav = (
     <Stack direction={matches ? 'column' : 'row'} spacing={1}>
@@ -130,7 +169,22 @@ function Nav({ hasDb, hasReadme }: NavProps) {
           anchorOrigin={{ vertical: 'top', horizontal: 'left' }}
           transformOrigin={{ vertical: 'bottom', horizontal: 'left' }}
         >
-          {nav}
+          {tabs.map((t, index) => {
+            const active = location.pathname === t.to;
+            return active ? (
+              <ActiveMenuItem {...t} tabIndex={index} />
+            ) : (
+              <MenuItem
+                sx={styleOverrides.inactive}
+                key={t.to}
+                component={Link}
+                to={t.to}
+                tabIndex={index}
+              >
+                {t.label}
+              </MenuItem>
+            );
+          })}
         </Menu>
       </>
     );

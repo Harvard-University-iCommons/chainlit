@@ -55,7 +55,7 @@ async def lifespan(app: FastAPI):
         await asyncio.sleep(1)
         webbrowser.open(url)
 
-    if config.project.database == "local":
+    if config.project.database in ["local", "custom"]:
         from prisma import Client, register  # type: ignore[attr-defined]
 
         client = Client()
@@ -103,7 +103,7 @@ async def lifespan(app: FastAPI):
     try:
         yield
     finally:
-        if config.project.database == "local":
+        if config.project.database in ["local", "custom"]:
             await client.disconnect()
         if watch_task:
             try:

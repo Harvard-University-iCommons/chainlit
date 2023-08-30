@@ -21,7 +21,8 @@ export default function RegularButton({ children, ...props }: Props) {
             theme.palette.mode === 'dark'
               ? grey[700]
               : theme.palette.primary.light,
-          '&:hover': {
+          '&:focus, &:hover, &.Mui-active, &.Mui-focusVisible': {
+            outline: '2px solid crimson',
             background: (theme) =>
               theme.palette.mode === 'dark'
                 ? grey[700]

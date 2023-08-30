@@ -57,6 +57,7 @@ export default function DeleteConversationButton({
         size="small"
         color="error"
         onClick={handleClickOpen}
+        aria-label="delete conversation"
       >
         <DeleteOutline />
       </IconButton>
@@ -77,7 +78,7 @@ export default function DeleteConversationButton({
           </DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-description">
-              This will delete the conversation as well as it's messages and
+              This will delete the conversation as well as its messages and
               elements.
             </DialogContentText>
           </DialogContent>
