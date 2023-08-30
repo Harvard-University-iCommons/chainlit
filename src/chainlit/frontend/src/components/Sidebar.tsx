@@ -117,7 +117,7 @@ export default function PersistentDrawerLeft() {
             </a>
             . The AI Sandbox is approived for use with Medium Risk Confidential
             data(L3) and below. Do not enter any High Risk Confidential data (L4
-            or above). Foraddition information, review the University's
+            or above). For additional information, review the University's
             guidelines for the use of generative AI.
           </p>
         </div>
