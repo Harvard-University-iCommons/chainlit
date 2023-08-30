@@ -10,10 +10,11 @@ import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import { styled, useTheme } from '@mui/material/styles';
 
-import HarvardIcon from '../assets/HarvardUniversity_Horizontal_Large_Shield_RGB.png';
-import DarkHarvardIcon from '../assets/HarvardUniversity_Horizontal_Large_Shield_Reverse_RGB.png';
-
 const drawerWidth = 340;
+const HarvardIcon =
+  'https://genai-static-temp.s3.amazonaws.com/HarvardUniversity_Horizontal_Large_Shield_RGB.png';
+const DarkHarvardIcon =
+  'https://genai-static-temp.s3.amazonaws.com/HarvardUniversity_Horizontal_Large_Shield_Reverse_RGB.png';
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })<{
   open?: boolean;
