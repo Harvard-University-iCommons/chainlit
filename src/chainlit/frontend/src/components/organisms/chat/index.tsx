@@ -104,7 +104,18 @@ const Chat = () => {
   const tasklist = tasklistElements.at(-1);
 
   return (
-    <Box display="flex" width="100%" height="0" flexGrow={1}>
+    <Box
+      sx={{
+        width: {
+          xs: '80%',
+          md: '100%',
+          lg: '100%'
+        },
+        display: 'flex',
+        height: 0
+      }}
+      flexGrow={1}
+    >
       <Head title="Chat" description="Chat" />
       <Sidebar />
       <Playground />
