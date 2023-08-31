@@ -134,7 +134,7 @@ export default function PersistentDrawerLeft() {
               {' '}
               University's Information Security Policies
             </a>
-            {'. '} The AI Sandbox is approived for use with
+            {'. '} The AI Sandbox is approved for use with
             <a
               href="https://security.harvard.edu/data-classification-table"
               aria-label="Medium Risk Confidential data(L3)"
