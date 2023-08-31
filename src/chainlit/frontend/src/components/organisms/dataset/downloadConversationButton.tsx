@@ -12,11 +12,11 @@ export default function DownloadConversationButton({ conversationId }: Props) {
     <IconButton
       className="download-conversation-button"
       component={Link}
-      to={`/project/download_conversation/${conversationId}?format=text`}
+      to={`/conversations/${conversationId}/text`}
       size="small"
       color="primary"
     >
-      <DownloadIcon aria-label="view conversation" />
+      <DownloadIcon aria-label="download conversation" />
     </IconButton>
   );
 }
