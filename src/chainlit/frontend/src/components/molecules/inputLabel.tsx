@@ -1,3 +1,5 @@
+import { grey } from 'palette';
+
 import { Info } from '@mui/icons-material';
 import { Box, InputLabel, Tooltip } from '@mui/material';
 
@@ -8,13 +10,15 @@ type InputLabelProps = {
   label: string | number;
   tooltip?: string;
   notificationsCount?: number | string;
+  isDark?: boolean;
 };
 
 export default function inputLabel({
   id,
   label,
   tooltip,
-  notificationsCount
+  notificationsCount,
+  isDark
 }: InputLabelProps): JSX.Element {
   return (
     <Box display="flex" justifyContent="space-between" width="100%">
@@ -24,7 +28,7 @@ export default function inputLabel({
           sx={{
             fontWeight: 600,
             fontSize: '12px',
-            color: 'grey.800'
+            color: isDark ? grey[500] : grey[800]
           }}
         >
           {label}

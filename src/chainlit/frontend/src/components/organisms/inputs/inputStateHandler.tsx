@@ -18,9 +18,9 @@ export default function InputStateHandler(
     id,
     label,
     notificationsCount,
-    tooltip
+    tooltip,
+    isDark
   } = props;
-
   return (
     <Box width="100%">
       {label ? (
@@ -29,6 +29,7 @@ export default function InputStateHandler(
           label={label}
           tooltip={tooltip}
           notificationsCount={notificationsCount}
+          isDark={isDark || false}
         />
       ) : null}
       <FormControl error={hasError} fullWidth aria-label={label}>

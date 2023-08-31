@@ -93,6 +93,7 @@ export default function SelectInput({
       description={description}
       label={label}
       tooltip={tooltip}
+      isDark={isDarkMode}
     >
       <MSelect
         labelId={id}

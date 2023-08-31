@@ -1,4 +1,4 @@
-import { grey, primary, white } from 'palette';
+import { grey, huitColorPaletteV3, primary, white } from 'palette';
 
 import { createTheme } from '@mui/material/styles';
 
@@ -85,7 +85,7 @@ const darkTheme = createTheme({
       paper: window?.theme?.dark?.paper || grey[900]
     },
     primary: {
-      main: window?.theme?.dark?.primary?.main || '#F80061',
+      main: window?.theme?.dark?.primary?.main || huitColorPaletteV3.white,
       dark: window?.theme?.dark?.primary?.dark || primary[800],
       light: window?.theme?.dark?.primary?.light || '#FFE7EB',
       contrastText: white
@@ -117,9 +117,9 @@ const lightTheme = createTheme({
       paper: window?.theme?.light?.paper || white
     },
     primary: {
-      main: window?.theme?.light?.primary?.main || '#F80061',
+      main: window?.theme?.light?.primary?.main || huitColorPaletteV3.black,
       dark: window?.theme?.light?.primary?.dark || primary[800],
-      light: window?.theme?.light?.primary?.light || '#FFE7EB',
+      light: window?.theme?.light?.primary?.light || huitColorPaletteV3.yellow,
       contrastText: white
     },
     secondary: {

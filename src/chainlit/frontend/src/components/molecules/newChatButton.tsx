@@ -1,3 +1,4 @@
+import { huitColorPaletteV3 } from 'palette';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -42,7 +43,7 @@ export default function NewChatButton() {
         startIcon={<AddIcon />}
         sx={{
           '&:focus, &:hover, &.Mui-active, &.Mui-focusVisible': {
-            outline: '2px solid crimson'
+            outline: '2px solid ' + huitColorPaletteV3.yellow
           }
         }}
       >
