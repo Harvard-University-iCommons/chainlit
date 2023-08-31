@@ -3,12 +3,12 @@ import mimetypes
 
 mimetypes.add_type("application/javascript", ".js")
 mimetypes.add_type("text/css", ".css")
-
 import asyncio
 import os
 import webbrowser
 from contextlib import asynccontextmanager
 from pathlib import Path
+from typing import Union
 
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import (
@@ -279,6 +279,26 @@ async def get_conversation(request: Request, conversation_id: str):
     db_client = await get_db_client_from_request(request)
     res = await db_client.get_conversation(conversation_id)
     return JSONResponse(content=res)
+
+
+@app.get("/project/download_conversation/{conversation_id}")
+async def download_conversation(
+    request: Request, conversation_id: str, format: Union[str, None] = None
+):
+    """Get a specific conversation as a file download."""
+    logger.info(f"request: {request}")
+    logger.info(f"request query params: {request.query_params}")
+    logger.info(f"format: {format}")
+
+    db_client = await get_db_client_from_request(request)
+    res = await db_client.get_conversation(conversation_id)
+
+    return PlainTextResponse(
+        content=json.dumps(res),
+        headers={
+            "Content-Disposition": f'attachment; filename=f"conversation_{conversation_id}.txt"'
+        },
+    )
 
 
 @app.get("/project/conversation/{conversation_id}/element/{element_id}")

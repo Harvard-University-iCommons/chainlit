@@ -11,6 +11,7 @@ import { clientState } from 'state/client';
 import { datasetFiltersState } from 'state/dataset';
 
 import DeleteConversationButton from './deleteConversationButton';
+import DownloadConversationButton from './downloadConversationButton';
 import OpenConversationButton from './openConversationButton';
 
 export interface IPageInfo {
@@ -165,6 +166,7 @@ export default function ConversationTable() {
           }}
         >
           <OpenConversationButton conversationId={conversation.id} />
+          <DownloadConversationButton conversationId={conversation.id} />
           <DeleteConversationButton
             conversationId={conversation.id}
             onDelete={() => refetchConversations()}
