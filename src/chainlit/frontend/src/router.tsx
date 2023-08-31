@@ -33,6 +33,10 @@ export const router = createBrowserRouter([
     )
   },
   {
+    path: '/conversations/:id/text',
+    element: <Navigate to="/conversations/:id/text" />
+  },
+  {
     path: '/dataset',
     element: <Dataset />
   },
