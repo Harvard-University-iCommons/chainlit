@@ -109,7 +109,7 @@ export default function PersistentDrawerLeft() {
             style={{ width: '18rem' }}
           />
           <h1>AI Sandbox</h1>
-          <h2>(Pilot Version)</h2>
+          <h2 style={{ fontSize: '2em' }}>(Pilot Version)</h2>
           <p>
             Use of this AI Sandbox is subject to data handling practices as
             outlined in the
@@ -131,6 +131,13 @@ export default function PersistentDrawerLeft() {
             and below. Do not enter any High Risk Confidential data (L4 or
             above).
             <br />
+            <Divider
+              sx={{
+                borderColor: theme.palette.mode == 'dark' ? 'white' : 'black',
+                mt: '1rem',
+                mb: '1rem'
+              }}
+            />
             Before using the AI Sandbox, please review the guidelines and
             instructions in
             <a
@@ -141,6 +148,15 @@ export default function PersistentDrawerLeft() {
               “Getting started with the AI Sandbox”
             </a>
             .
+            <br />
+            <Divider
+              sx={{
+                borderColor: theme.palette.mode == 'dark' ? 'white' : 'black',
+                mt: '1rem',
+                mb: '1rem'
+              }}
+            />
+            Chat history cleared at end of session.
           </p>
         </div>
       </Drawer>

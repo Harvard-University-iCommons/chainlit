@@ -16,7 +16,7 @@ export default function Conversation() {
         flexGrow={1}
       >
         <Box my={2} />
-        <Typography>Chat history is cleared at end of the session. </Typography>
+        <Typography>Chat history cleared at end of session. </Typography>
         <Filters />
         <Box my={2} />
         <ConversationTable />
