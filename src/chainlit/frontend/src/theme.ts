@@ -24,7 +24,7 @@ declare global {
 }
 
 const typography = {
-  fontFamily: ['Inter', 'sans-serif'].join(',')
+  fontFamily: ['brandon-grotesque', 'sans-serif'].join(',')
 };
 
 const components = {

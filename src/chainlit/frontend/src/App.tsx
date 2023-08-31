@@ -74,7 +74,7 @@ function App() {
         toastOptions={{
           className: 'toast',
           style: {
-            fontFamily: 'Inter',
+            fontFamily: 'brandon-grotesque',
             background: theme.palette.background.paper,
             border: `1px solid ${theme.palette.divider}`,
             padding: theme.spacing(1),

@@ -119,7 +119,7 @@ export default memo(function MessageContent({
             minHeight: '20px',
             fontSize: '1rem',
             lineHeight: '1.5rem',
-            fontFamily: 'Inter',
+            fontFamily: 'brandon-grotesque',
             fontWeight: authorIsUser ? 500 : 300
           }}
           component="div"

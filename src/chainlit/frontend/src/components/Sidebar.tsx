@@ -108,8 +108,11 @@ export default function PersistentDrawerLeft() {
             alt="harvard icon"
             style={{ width: '18rem' }}
           />
-          <h1>AI Sandbox</h1>
-          <h2>(Pilot Version)</h2>
+          <h3>
+            AI Sandbox
+            <br />
+            (Pilot Version)
+          </h3>
           <p>
             Use of this AI Sandbox is subject to data handling practices as
             outlined in the
