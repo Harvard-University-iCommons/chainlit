@@ -11,8 +11,8 @@ export default function DownloadConversationButton({ conversationId }: Props) {
   return (
     <IconButton
       className="download-conversation-button"
-      component={Link}
-      to={`/conversations/${conversationId}/text`}
+      // component={Link}
+      // to={`/conversations/${conversationId}/text`}
       size="small"
       color="primary"
       onClick={async () =>
