@@ -28,11 +28,13 @@ import { projectSettingsState } from 'state/project';
 interface INavItem {
   to: string;
   label: string;
+  target?: string;
 }
 
 interface IMenuItem {
   to: string;
   label: string;
+  target?: string;
   tabIndex: number;
 }
 function ActiveNavItem({ to, label }: INavItem) {
@@ -73,9 +75,15 @@ const styleOverrides = {
   }
 };
 
-function NavItem({ to, label }: INavItem) {
+function NavItem({ to, label, target }: INavItem) {
   return (
-    <Button component={Link} to={to} key={to} sx={styleOverrides.inactive}>
+    <Button
+      component={Link}
+      to={to}
+      key={to}
+      target={target}
+      sx={styleOverrides.inactive}
+    >
       {label}
     </Button>
   );
@@ -113,17 +121,21 @@ function Nav({ hasDb, hasReadme }: NavProps) {
 
   const matches = useMediaQuery(theme.breakpoints.down('md'));
 
-  const tabs = [{ to: '/', label: 'Chat' }];
+  const tabs = [{ to: '/', label: 'Chat', target: '' }];
 
   if (hasDb) {
-    tabs.push({ to: '/dataset', label: 'History' });
+    tabs.push({ to: '/dataset', label: 'History', target: '' });
   }
 
   if (hasReadme) {
-    tabs.push({ to: '/readme', label: 'Readme' });
+    tabs.push({ to: '/readme', label: 'Readme', target: '' });
   }
 
-  tabs.push({ to: 'https://huit.harvard.edu/', label: 'Help' });
+  tabs.push({
+    to: 'https://huit.harvard.edu/',
+    label: 'Help',
+    target: '_blank'
+  });
 
   const nav = (
     <Stack direction={matches ? 'column' : 'row'} spacing={1}>
