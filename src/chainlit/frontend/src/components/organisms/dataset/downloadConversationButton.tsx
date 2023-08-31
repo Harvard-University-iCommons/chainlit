@@ -15,6 +15,14 @@ export default function DownloadConversationButton({ conversationId }: Props) {
       to={`/conversations/${conversationId}/text`}
       size="small"
       color="primary"
+      onClick={async () =>
+        await fetch(`/conversations/${conversationId}/text`, {
+          headers: {
+            'content-type': 'text/plain'
+          },
+          method: 'GET'
+        })
+      }
     >
       <DownloadIcon aria-label="download conversation" />
     </IconButton>
