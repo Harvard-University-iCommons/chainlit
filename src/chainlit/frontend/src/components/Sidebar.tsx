@@ -1,3 +1,4 @@
+import { huitColorPaletteV3 } from 'palette';
 import * as React from 'react';
 
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
@@ -57,6 +58,13 @@ export default function PersistentDrawerLeft() {
     setOpen(false);
   };
 
+  const linkStyle = {
+    color:
+      theme.palette.mode == 'dark'
+        ? huitColorPaletteV3.yellow
+        : huitColorPaletteV3.blue
+  };
+
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -108,6 +116,11 @@ export default function PersistentDrawerLeft() {
             alt="harvard icon"
             style={{ width: '18rem' }}
           />
+          <h3>
+            AI Sandbox
+            <br />
+            (Pilot Version)
+          </h3>
           <h1>AI Sandbox</h1>
           <h2 style={{ fontSize: '2em' }}>(Pilot Version)</h2>
           <p>
@@ -116,6 +129,7 @@ export default function PersistentDrawerLeft() {
             <a
               href="https://policy.security.harvard.edu/"
               aria-label="university's information security policies"
+              style={linkStyle}
             >
               {' '}
               University's Information Security Policies
@@ -124,6 +138,7 @@ export default function PersistentDrawerLeft() {
             <a
               href="https://security.harvard.edu/data-classification-table"
               aria-label="Medium Risk Confidential data(L3)"
+              style={linkStyle}
             >
               {' '}
               Medium Risk Confidential data(L3)
@@ -143,6 +158,7 @@ export default function PersistentDrawerLeft() {
             <a
               href="https://harvard.service-now.com/ithelp?id=kb_article&sys_id=ca9dd14447f07950566cf147536d433b"
               aria-label="Getting started with the AI Sandbox"
+              style={linkStyle}
             >
               {' '}
               “Getting started with the AI Sandbox”

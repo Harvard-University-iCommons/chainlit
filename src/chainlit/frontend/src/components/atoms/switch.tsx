@@ -1,4 +1,4 @@
-import { green } from 'palette';
+import { green, huitColorPaletteV3 } from 'palette';
 
 import MSwitch, { SwitchProps as MSwitchProps } from '@mui/material/Switch';
 import { styled } from '@mui/material/styles';
@@ -56,7 +56,7 @@ const StyledSwitch = styled((props: MSwitchProps) => (
 
   return {
     '&:focus, &:hover, &.Mui-active, &.Mui-focusVisible': {
-      outline: '2px solid crimson',
+      outline: '2px solid ' + huitColorPaletteV3.blue,
       borderRadius: 26 / 2
     },
     width: 40,
@@ -68,7 +68,7 @@ const StyledSwitch = styled((props: MSwitchProps) => (
       padding: '4px',
       transitionDuration: '300ms',
       '&:focus, &:hover, &.Mui-active, &.Mui-focusVisible': {
-        outline: '2px solid crimson'
+        outline: '2px solid ' + huitColorPaletteV3.blue
       },
       '&.Mui-checked': {
         transform: 'translateX(16px)',

@@ -126,7 +126,12 @@ const Chat = () => {
         <Box my={1} />
         {session?.error && (
           <Alert id="session-error" severity="error">
-            Could not reach the server.
+            You do not have access to this sandbox. If you need help, please
+            contact the{' '}
+            <a href="https://huit.harvard.edu/" aria-label="HUIT service desk">
+              HUIT Service Desk
+            </a>
+            .
           </Alert>
         )}
         {!!messages.length && (

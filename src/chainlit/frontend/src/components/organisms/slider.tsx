@@ -1,4 +1,4 @@
-import { grey } from 'palette';
+import { grey, huitColorPaletteV3 } from 'palette';
 
 import Slider, { SliderProps as MSliderProps } from '@mui/material/Slider';
 import { styled } from '@mui/material/styles';
@@ -44,7 +44,7 @@ const StyledSlider = styled(Slider)(({ theme }) => {
     },
     '& .MuiSlider-root, &:focus, &:hover, &.Mui-focusVisible': {
       // boxShadow: 'inherit'
-      outline: '2px solid crimson'
+      outline: '2px solid ' + huitColorPaletteV3.blue
     },
     '& .MuiSlider-thumb': {
       height: 15,
@@ -53,7 +53,7 @@ const StyledSlider = styled(Slider)(({ theme }) => {
       border: `4px solid ${isLightMode ? grey[300] : grey[800]}`,
       '&:focus, &:hover, &.Mui-active, &.Mui-focusVisible, & .MuiSlider-root': {
         boxShadow: 'inherit',
-        outline: '2px solid crimson'
+        outline: '2px solid ' + huitColorPaletteV3.blue
       },
       '&:before': {
         display: 'none'

@@ -1,4 +1,4 @@
-import { grey } from 'palette';
+import { grey, huitColorPaletteV3 } from 'palette';
 
 import Button, { ButtonProps } from '@mui/material/Button';
 
@@ -19,13 +19,13 @@ export default function RegularButton({ children, ...props }: Props) {
               : theme.palette.primary.main,
           background: (theme) =>
             theme.palette.mode === 'dark'
-              ? grey[700]
+              ? huitColorPaletteV3.blue
               : theme.palette.primary.light,
           '&:focus, &:hover, &.Mui-active, &.Mui-focusVisible': {
-            outline: '2px solid crimson',
+            outline: '2px solid ' + huitColorPaletteV3.blue,
             background: (theme) =>
               theme.palette.mode === 'dark'
-                ? grey[700]
+                ? huitColorPaletteV3.blue
                 : theme.palette.primary.light
           }
         }}

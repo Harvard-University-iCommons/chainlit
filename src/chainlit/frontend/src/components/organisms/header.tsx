@@ -1,4 +1,4 @@
-import { grey } from 'palette';
+import { huitColorPaletteV3 } from 'palette';
 import { useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
@@ -48,7 +48,7 @@ const styleOverrides = {
     textTransform: 'none',
     color: 'text.secondary',
     '&:focus, &:hover, &.Mui-active, &.Mui-focusVisible': {
-      outline: '2px solid crimson',
+      outline: '2px solid ' + huitColorPaletteV3.blue,
       background: 'transparent'
     }
   },
@@ -59,11 +59,15 @@ const styleOverrides = {
         ? 'text.primary'
         : theme.palette.primary.main,
     background: (theme: Theme) =>
-      theme.palette.mode === 'dark' ? grey[700] : theme.palette.primary.light,
+      theme.palette.mode === 'dark'
+        ? huitColorPaletteV3.white
+        : theme.palette.primary.light,
     '&:focus, &:hover, &.Mui-active, &.Mui-focusVisible': {
-      outline: '2px solid crimson',
+      outline: '2px solid ' + huitColorPaletteV3.blue,
       background: (theme: Theme) =>
-        theme.palette.mode === 'dark' ? grey[700] : theme.palette.primary.light
+        theme.palette.mode === 'dark'
+          ? huitColorPaletteV3.white
+          : theme.palette.primary.light
     }
   }
 };

@@ -1,3 +1,5 @@
+import { huitColorPaletteV3 } from 'palette';
+
 import { useTheme } from '@mui/material';
 import Button, { ButtonProps } from '@mui/material/Button';
 
@@ -10,7 +12,7 @@ export default function AccentButton({ children, ...props }: ButtonProps) {
         {...props}
         sx={{
           '&:focus, &:hover, &.Mui-active, &.Mui-focusVisible': {
-            outline: '2px solid crimson'
+            outline: '2px solid ' + huitColorPaletteV3.blue
           }
         }}
       >

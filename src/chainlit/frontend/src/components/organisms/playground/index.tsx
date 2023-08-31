@@ -164,7 +164,7 @@ export default function Playground() {
         <Stack direction="row" alignItems="flex-start">
           <Box
             sx={{
-              fontFamily: 'Inter',
+              fontFamily: 'brandon-grotesque',
               fontSize: '16px',
               lineHeight: '24px',
               padding: '0.75rem',

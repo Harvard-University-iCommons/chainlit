@@ -53,10 +53,20 @@ export const yellow = {
   900: '#995C00'
 };
 
+export const huitColorPaletteV3 = {
+  black: '#1E1E1E',
+  blue: '#4066AE',
+  yellow: '#FBDF4C',
+  lightGray: '#F7F9FA',
+  white: '#FFFFFF',
+  lightYellow: '#FBF1B0'
+};
+
 export default {
   white,
   grey,
   primary,
   green,
-  yellow
+  yellow,
+  huitColorPaletteV3
 };
