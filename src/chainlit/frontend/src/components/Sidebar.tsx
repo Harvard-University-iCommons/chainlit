@@ -113,14 +113,34 @@ export default function PersistentDrawerLeft() {
           <p>
             Use of this AI Sandbox is subject to data handling practices as
             outlined in the
-            <a href="https://policy.security.harvard.edu/">
+            <a
+              href="https://policy.security.harvard.edu/"
+              aria-label="university's information security policies"
+            >
               {' '}
               University's Information Security Policies
             </a>
-            . The AI Sandbox is approived for use with Medium Risk Confidential
-            data(L3) and below. Do not enter any High Risk Confidential data (L4
-            or above). For additional information, review the University's
-            guidelines for the use of generative AI.
+            {'. '} The AI Sandbox is approived for use with
+            <a
+              href="https://security.harvard.edu/data-classification-table"
+              aria-label="Medium Risk Confidential data(L3)"
+            >
+              {' '}
+              Medium Risk Confidential data(L3)
+            </a>{' '}
+            and below. Do not enter any High Risk Confidential data (L4 or
+            above).
+            <br />
+            Before using the AI Sandbox, please review the guidelines and
+            instructions in
+            <a
+              href="https://harvard.service-now.com/ithelp?id=kb_article&sys_id=ca9dd14447f07950566cf147536d433b"
+              aria-label="Getting started with the AI Sandbox"
+            >
+              {' '}
+              “Getting started with the AI Sandbox”
+            </a>
+            .
           </p>
         </div>
       </Drawer>
