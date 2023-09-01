@@ -112,7 +112,7 @@ export default function PersistentDrawerLeft() {
           </IconButton>
         </DrawerHeader>
         <Divider />
-        <div style={{ padding: '1rem' }}>
+        <div style={{ padding: '1rem', fontSize: '1.1rem' }}>
           <img
             src={theme.palette.mode == 'dark' ? DarkHarvardIcon : HarvardIcon}
             alt="harvard icon"

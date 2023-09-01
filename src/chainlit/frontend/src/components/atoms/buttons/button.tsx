@@ -27,7 +27,8 @@ export default function RegularButton({ children, ...props }: Props) {
               theme.palette.mode === 'dark'
                 ? huitColorPaletteV3.blue
                 : theme.palette.primary.light
-          }
+          },
+          fontSize: '1rem'
         }}
         {...props}
       >
