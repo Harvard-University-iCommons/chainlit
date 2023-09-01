@@ -130,6 +130,7 @@ export default function PersistentDrawerLeft() {
               href="https://policy.security.harvard.edu/"
               aria-label="university's information security policies"
               style={linkStyle}
+              target="_blank"
             >
               {' '}
               University's Information Security Policies
@@ -139,6 +140,7 @@ export default function PersistentDrawerLeft() {
               href="https://security.harvard.edu/data-classification-table"
               aria-label="Medium Risk Confidential data(L3)"
               style={linkStyle}
+              target="_blank"
             >
               {' '}
               Medium Risk Confidential data(L3)
@@ -153,12 +155,13 @@ export default function PersistentDrawerLeft() {
                 mb: '1rem'
               }}
             />
-            Before using the AI Sandbox, please review the guidelines and
-            instructions in
+            Before using the AI Sandbox, please review these guidelines and
+            instructions.
             <a
               href="https://harvard.service-now.com/ithelp?id=kb_article&sys_id=ca9dd14447f07950566cf147536d433b"
               aria-label="Getting started with the AI Sandbox"
               style={linkStyle}
+              target="_blank"
             >
               {' '}
               “Getting started with the AI Sandbox”
