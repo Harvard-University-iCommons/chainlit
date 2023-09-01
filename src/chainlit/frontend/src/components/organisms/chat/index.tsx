@@ -126,8 +126,8 @@ const Chat = () => {
         <Box my={1} />
         {session?.error && (
           <Alert id="session-error" severity="error">
-            You do not have access to this sandbox. If you need help, please
-            contact the{' '}
+            Unable to contact the sandbox. Please refresh the page and contact
+            the{' '}
             <a href="https://huit.harvard.edu/" aria-label="HUIT service desk">
               HUIT Service Desk
             </a>
