@@ -18,7 +18,7 @@ export default function WaterMark() {
         }}
       >
         The AI Sandbox may generate responses that are inaccurate, misleading,
-        or incomplete. Use of this service is subject to it's&nbsp;
+        or incomplete. Use of this service is subject to its&nbsp;
         <a
           href="https://huit.harvard.edu/ai-sandbox/terms-of-use"
           target="_blank"
