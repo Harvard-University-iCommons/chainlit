@@ -1,5 +1,6 @@
 import { huitColorPaletteV3 } from 'palette';
 import * as React from 'react';
+import { useMediaQuery } from 'usehooks-ts';
 
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
@@ -48,7 +49,8 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 export default function PersistentDrawerLeft() {
   const theme = useTheme();
-  const [open, setOpen] = React.useState(true);
+  const matches = useMediaQuery('(max-width:480px');
+  const [open, setOpen] = React.useState(matches ? false : true);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -74,8 +76,8 @@ export default function PersistentDrawerLeft() {
         onClick={handleDrawerOpen}
         edge="start"
         sx={{
-          mb: { md: '14rem', lg: '14rem' },
-          mt: { xs: '10rem' },
+          position: { xs: 'inherit', lg: 'absolute' },
+          mb: { xs: '25rem', md: '14rem', lg: '14rem' },
           ml: '2px',
           mr: 0,
           bottom: '22rem',
@@ -110,7 +112,7 @@ export default function PersistentDrawerLeft() {
           </IconButton>
         </DrawerHeader>
         <Divider />
-        <div style={{ padding: '1rem' }}>
+        <div style={{ padding: '1rem', fontSize: '1.1rem' }}>
           <img
             src={theme.palette.mode == 'dark' ? DarkHarvardIcon : HarvardIcon}
             alt="harvard icon"
@@ -121,8 +123,6 @@ export default function PersistentDrawerLeft() {
             <br />
             (Pilot Version)
           </h3>
-          <h1>AI Sandbox</h1>
-          <h2 style={{ fontSize: '2em' }}>(Pilot Version)</h2>
           <p>
             Use of this AI Sandbox is subject to data handling practices as
             outlined in the

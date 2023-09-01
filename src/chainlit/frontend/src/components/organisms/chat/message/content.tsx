@@ -117,8 +117,8 @@ export default memo(function MessageContent({
           sx={{
             width: '100%',
             minHeight: '20px',
-            fontSize: '1rem',
-            lineHeight: '1.5rem',
+            fontSize: '1.2rem',
+            lineHeight: '2rem',
             fontFamily: 'brandon-grotesque',
             fontWeight: authorIsUser ? 500 : 300
           }}

@@ -50,7 +50,8 @@ const styleOverrides = {
     '&:focus, &:hover, &.Mui-active, &.Mui-focusVisible': {
       outline: '2px solid ' + huitColorPaletteV3.blue,
       background: 'transparent'
-    }
+    },
+    fontSize: '1rem'
   },
   active: {
     textTransform: 'none',
