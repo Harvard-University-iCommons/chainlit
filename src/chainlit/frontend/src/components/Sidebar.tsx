@@ -121,8 +121,6 @@ export default function PersistentDrawerLeft() {
             <br />
             (Pilot Version)
           </h3>
-          <h1>AI Sandbox</h1>
-          <h2 style={{ fontSize: '2em' }}>(Pilot Version)</h2>
           <p>
             Use of this AI Sandbox is subject to data handling practices as
             outlined in the
