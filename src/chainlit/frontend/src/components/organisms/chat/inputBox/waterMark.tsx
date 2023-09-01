@@ -68,7 +68,7 @@ export default function WaterMark() {
             textDecoration: 'underline',
             color: borderColor
           }}
-          aria-label="Digital Accessibility"
+          aria-label="Terms of Use / FAQ"
         >
           <Typography fontSize="12px" color="text.secondary">
             Terms of Use / FAQ
