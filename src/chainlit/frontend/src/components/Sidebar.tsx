@@ -155,16 +155,15 @@ export default function PersistentDrawerLeft() {
                 mb: '1rem'
               }}
             />
-            Before using the AI Sandbox, please review these guidelines and
-            instructions.
+            Before using the AI Sandbox, please
             <a
-              href="https://harvard.service-now.com/ithelp?id=kb_article&sys_id=ca9dd14447f07950566cf147536d433b"
-              aria-label="Getting started with the AI Sandbox"
+              href="https://huit.harvard.edu/ai-sandbox/get-started"
+              aria-label="guidelines and instructions"
               style={linkStyle}
               target="_blank"
             >
               {' '}
-              “Getting started with the AI Sandbox”
+              review these guidelines and instructions.
             </a>
             .
             <br />

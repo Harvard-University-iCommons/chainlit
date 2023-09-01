@@ -20,7 +20,7 @@ export default function WaterMark() {
         The AI Sandbox may generate responses that are inaccurate, misleading,
         or incomplete. Use of this service is subject to it's&nbsp;
         <a
-          href="https://harvard.service-now.com/ithelp?id=kb_article&sys_id=ed94e064478d71506b944f53636d4380"
+          href="https://huit.harvard.edu/ai-sandbox/terms-of-use"
           target="_blank"
           style={{
             display: 'flex',
@@ -41,7 +41,7 @@ export default function WaterMark() {
           spacing={2}
         >
           <a
-            href="https://harvard.service-now.com/ithelp?id=kb_article&sys_id=ca9dd14447f07950566cf147536d433b"
+            href="https://huit.harvard.edu/ai-sandbox/get-started"
             target="_blank"
             style={{
               display: 'flex',
