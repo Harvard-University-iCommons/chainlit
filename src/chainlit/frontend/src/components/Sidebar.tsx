@@ -1,5 +1,6 @@
 import { huitColorPaletteV3 } from 'palette';
 import * as React from 'react';
+import { useMediaQuery } from 'usehooks-ts';
 
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
@@ -48,7 +49,8 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 export default function PersistentDrawerLeft() {
   const theme = useTheme();
-  const [open, setOpen] = React.useState(true);
+  const matches = useMediaQuery('(max-width:480px');
+  const [open, setOpen] = React.useState(matches ? false : true);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -74,8 +76,8 @@ export default function PersistentDrawerLeft() {
         onClick={handleDrawerOpen}
         edge="start"
         sx={{
-          mb: { md: '14rem', lg: '14rem' },
-          mt: { xs: '10rem' },
+          position: { xs: 'inherit', lg: 'absolute' },
+          mb: { xs: '25rem', md: '14rem', lg: '14rem' },
           ml: '2px',
           mr: 0,
           bottom: '22rem',
