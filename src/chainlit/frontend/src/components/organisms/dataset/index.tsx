@@ -10,7 +10,7 @@ export default function Conversation() {
       <Box
         display="flex"
         flexDirection="column"
-        width="100%"
+        width={{ xs: '90%', lg: '100%' }}
         maxWidth="60rem"
         mx="auto"
         flexGrow={1}
