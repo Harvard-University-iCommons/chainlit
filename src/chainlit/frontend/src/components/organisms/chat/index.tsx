@@ -131,7 +131,7 @@ const Chat = () => {
             <a href="https://huit.harvard.edu/" aria-label="HUIT service desk">
               HUIT Service Desk
             </a>
-            .
+            if the issue persists.
           </Alert>
         )}
         {!!messages.length && (
