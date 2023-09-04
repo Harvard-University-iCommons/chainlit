@@ -334,6 +334,8 @@ def register_wildcard_route_handler():
         chainlit_initial_headers = dict(request.headers)
         if "cookie" in chainlit_initial_headers:
             del chainlit_initial_headers["cookie"]
+        if "x-amzn-oidc-accesstoken" in chainlit_initial_headers:
+            del chainlit_initial_headers["x-amzn-oidc-accesstoken"]
 
         response.set_cookie(
             key=key,
