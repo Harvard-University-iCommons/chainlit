@@ -14,7 +14,9 @@ export default function WaterMark() {
       <Box
         sx={{
           display: { xs: 'inline', md: 'flex', lg: 'flex' },
-          justifyContent: 'center'
+          justifyContent: 'center',
+          mx: { xs: '5px' },
+          fontWeight: 500
         }}
       >
         The AI Sandbox may generate responses that are inaccurate, misleading,
@@ -23,7 +25,7 @@ export default function WaterMark() {
           href="https://huit.harvard.edu/ai-sandbox/terms-of-use"
           target="_blank"
           style={{
-            display: 'flex',
+            display: 'inline-block',
             textDecoration: 'underline',
             color: borderColor
           }}
@@ -32,7 +34,11 @@ export default function WaterMark() {
           Terms of Use.
         </a>
       </Box>
-      <Stack mx="auto">
+      <Stack
+        sx={{
+          mx: { xs: '5px', md: 'auto', lg: 'auto' }
+        }}
+      >
         <Stack
           direction="row"
           divider={

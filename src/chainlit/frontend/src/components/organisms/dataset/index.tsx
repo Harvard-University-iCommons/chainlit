@@ -21,9 +21,7 @@ export default function Conversation() {
         <Box my={2} />
         <ConversationTable />
       </Box>
-      <Box display="flex" mb="1rem">
-        <WaterMark />
-      </Box>
+      <WaterMark />
     </>
   );
 }
