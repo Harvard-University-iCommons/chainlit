@@ -130,7 +130,7 @@ const Chat = () => {
             the{' '}
             <a href="https://huit.harvard.edu/" aria-label="HUIT service desk">
               HUIT Service Desk
-            </a>
+            </a>{' '}
             if the issue persists.
           </Alert>
         )}
