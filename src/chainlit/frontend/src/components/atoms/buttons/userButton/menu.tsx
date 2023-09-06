@@ -58,6 +58,24 @@ export default function UserMenu({ anchorEl, open, handleClose }: Props) {
         <ListItemText>Settings</ListItemText>
       </MenuItem>
       <MenuItem
+        key="logout"
+        onClick={() => {
+          // delete the cookies
+          console.log('delete the cookies');
+
+          // redirect to hkey logout
+          console.log('redirect to hkey logout url');
+        }}
+      >
+        <ListItemIcon>
+          <LogoutIcon
+            style={{ paddingLeft: 0 }}
+            fontSize="small"
+            aria-label="logout"
+          />
+        </ListItemIcon>
+      </MenuItem>
+      <MenuItem
         key="close"
         onClick={() => {
           handleClose();
