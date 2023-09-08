@@ -60,11 +60,8 @@ export default function UserMenu({ anchorEl, open, handleClose }: Props) {
       <MenuItem
         key="logout"
         onClick={() => {
-          // delete the cookies
-          console.log('delete the cookies');
-
-          // redirect to hkey logout
-          console.log('redirect to hkey logout url');
+          // redirect to IdP logout URL
+          console.log('redirect to logout url');
         }}
       >
         <ListItemIcon>
