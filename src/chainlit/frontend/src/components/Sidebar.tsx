@@ -143,7 +143,7 @@ export default function PersistentDrawerLeft() {
               target="_blank"
             >
               {' '}
-              Medium Risk Confidential data(L3)
+              Medium Risk Confidential data (L3)
             </a>{' '}
             and below. Do not enter any High Risk Confidential data (L4 or
             above).
