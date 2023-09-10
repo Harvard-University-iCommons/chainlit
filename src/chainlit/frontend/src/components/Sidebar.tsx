@@ -133,17 +133,17 @@ export default function PersistentDrawerLeft() {
               target="_blank"
             >
               {' '}
-              University's Information Security Policies
+              University's Information Security Policy
             </a>
             {'. '} The AI Sandbox is approved for use with
             <a
               href="https://security.harvard.edu/data-classification-table"
-              aria-label="Medium Risk Confidential data(L3)"
+              aria-label="Medium Risk Confidential data (L3)"
               style={linkStyle}
               target="_blank"
             >
               {' '}
-              Medium Risk Confidential data(L3)
+              Medium Risk Confidential data (L3)
             </a>{' '}
             and below. Do not enter any High Risk Confidential data (L4 or
             above).
@@ -155,15 +155,14 @@ export default function PersistentDrawerLeft() {
                 mb: '1rem'
               }}
             />
-            Before using the AI Sandbox, please
+            Before using the AI Sandbox, please{' '}
             <a
               href="https://huit.harvard.edu/ai-sandbox/get-started"
               aria-label="guidelines and instructions"
               style={linkStyle}
               target="_blank"
             >
-              {' '}
-              review these guidelines and instructions.
+              review these guidelines and instructions
             </a>
             .
             <br />
