@@ -62,6 +62,7 @@ export default function UserMenu({ anchorEl, open, handleClose }: Props) {
         onClick={() => {
           // redirect to IdP logout URL
           console.log('redirect to logout url');
+          window.location.href = '/logout';
         }}
       >
         <ListItemIcon>
@@ -71,6 +72,7 @@ export default function UserMenu({ anchorEl, open, handleClose }: Props) {
             aria-label="logout"
           />
         </ListItemIcon>
+        <ListItemText>Logout</ListItemText>
       </MenuItem>
       <MenuItem
         key="close"
