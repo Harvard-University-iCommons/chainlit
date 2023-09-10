@@ -74,21 +74,6 @@ export default function UserMenu({ anchorEl, open, handleClose }: Props) {
         </ListItemIcon>
         <ListItemText>Logout</ListItemText>
       </MenuItem>
-      <MenuItem
-        key="close"
-        onClick={() => {
-          handleClose();
-        }}
-      >
-        <ListItemIcon>
-          <CloseIcon
-            style={{ paddingLeft: 0 }}
-            fontSize="small"
-            aria-label="close settings"
-          />
-        </ListItemIcon>
-        <ListItemText>Close</ListItemText>
-      </MenuItem>
     </>
   );
 
