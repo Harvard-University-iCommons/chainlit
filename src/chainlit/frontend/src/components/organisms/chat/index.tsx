@@ -122,15 +122,15 @@ const Chat = () => {
       <ChatSettingsModal />
       <TaskList tasklist={tasklist} isMobile={false} />
       <SideView>
+        <Box mx={1} />
         <TaskList tasklist={tasklist} isMobile={true} />
-        <Box my={1} />
         {session?.error && (
           <Alert id="session-error" severity="error">
             Unable to contact the sandbox. Please refresh the page and contact
             the{' '}
             <a href="https://huit.harvard.edu/" aria-label="HUIT service desk">
               HUIT Service Desk
-            </a>
+            </a>{' '}
             if the issue persists.
           </Alert>
         )}
