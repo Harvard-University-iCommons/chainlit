@@ -76,7 +76,7 @@ export default function PersistentDrawerLeft() {
         onClick={handleDrawerOpen}
         edge="start"
         sx={{
-          position: { xs: 'inherit', lg: 'absolute' },
+          position: 'inherit',
           mb: { xs: '25rem', md: '14rem', lg: '14rem' },
           ml: '2px',
           mr: 0,
