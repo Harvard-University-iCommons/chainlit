@@ -126,12 +126,10 @@ const Chat = () => {
         <TaskList tasklist={tasklist} isMobile={true} />
         {session?.error && (
           <Alert id="session-error" severity="error">
-            Unable to contact the sandbox. Please refresh the page and contact
-            the{' '}
+            Please refresh the page and if the issue persists, contact the{' '}
             <a href="https://huit.harvard.edu/" aria-label="HUIT service desk">
-              HUIT Service Desk
-            </a>{' '}
-            if the issue persists.
+              HUIT Service Desk.
+            </a>
           </Alert>
         )}
         {!!messages.length && (

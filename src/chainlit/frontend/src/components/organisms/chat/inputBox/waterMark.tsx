@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { Box, Divider, Stack, Typography } from '@mui/material';
+import { Box, Divider, Link, Stack, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 
 export default function WaterMark() {
@@ -21,18 +21,17 @@ export default function WaterMark() {
       >
         The AI Sandbox may generate responses that are inaccurate, misleading,
         or incomplete. Use of this service is subject to its&nbsp;
-        <a
+        <Link
           href="https://huit.harvard.edu/ai-sandbox/terms-of-use"
           target="_blank"
-          style={{
+          sx={{
             display: 'inline-block',
-            textDecoration: 'underline',
             color: borderColor
           }}
           aria-label="Terms of Use / FAQ"
         >
           Terms of Use.
-        </a>
+        </Link>
       </Box>
       <Stack
         sx={{
@@ -46,40 +45,40 @@ export default function WaterMark() {
           }
           spacing={2}
         >
-          <a
+          <Link
             href="https://huit.harvard.edu/ai-sandbox/get-started"
             target="_blank"
-            style={{
+            sx={{
               display: 'flex',
-              textDecoration: 'underline',
+
               color: borderColor
             }}
-            aria-label="Getting started"
+            aria-label="Get started"
           >
             <Typography fontSize="12px" color="text.secondary">
-              Getting started
+              Get started
             </Typography>
-          </a>
-          <a
+          </Link>
+          <Link
             href="https://harvard.az1.qualtrics.com/jfe/form/SV_6A5lw98k350Ey3A"
             target="_blank"
-            style={{
+            sx={{
               display: 'flex',
-              textDecoration: 'underline',
+
               color: borderColor
             }}
-            aria-label="Feedback"
+            aria-label="Send feedback"
           >
             <Typography fontSize="12px" color="text.secondary">
-              Feedback
+              Send feedback
             </Typography>
-          </a>
-          <a
+          </Link>
+          <Link
             href="https://accessibility.huit.harvard.edu/digital-accessibility-policy"
             target="_blank"
-            style={{
+            sx={{
               display: 'flex',
-              textDecoration: 'underline',
+
               color: borderColor
             }}
             aria-label="Digital Accessibility"
@@ -87,37 +86,22 @@ export default function WaterMark() {
             <Typography fontSize="12px" color="text.secondary">
               Digital Accessibility
             </Typography>
-          </a>
-          <a
-            href="https://harvard.service-now.com/ithelp?id=kb_article&sys_id=ed94e064478d71506b944f53636d4380"
+          </Link>
+          <Link
+            href="https://huit.harvard.edu/ai-sandbox/terms-of-use"
             target="_blank"
-            style={{
+            sx={{
               display: 'flex',
-              textDecoration: 'underline',
+
               color: borderColor
             }}
-            aria-label="Terms of Use / FAQ"
+            aria-label="Terms of Use"
           >
             <Typography fontSize="12px" color="text.secondary">
-              Terms of Use / FAQ
+              Terms of Use
             </Typography>
-          </a>
+          </Link>
         </Stack>
-        <a
-          href="https://huit.harvard.edu"
-          target="_blank"
-          style={{
-            display: 'flex',
-            textDecoration: 'none',
-            justifyContent: 'center',
-            color: borderColor
-          }}
-          aria-label="Powered by HUIT"
-        >
-          <Typography fontSize="12px" color="text.secondary">
-            Powered by HUIT
-          </Typography>
-        </a>
       </Stack>
     </>
   );
