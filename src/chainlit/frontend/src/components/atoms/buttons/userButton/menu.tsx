@@ -10,8 +10,8 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
-  Menu,
   MenuItem,
+  Popover,
   Typography
 } from '@mui/material';
 
@@ -46,11 +46,35 @@ export default function UserMenu({ anchorEl, open, handleClose }: Props) {
   const settingsItem = (
     <>
       <MenuItem
+        key="close"
+        aria-label="Close options menu"
+        onClick={() => {
+          handleClose();
+        }}
+        tabIndex={0}
+        sx={{
+          pr: 0,
+          pb: { xs: 0, sm: '10px', md: 1, lg: 1 },
+          pt: { xs: 0, sm: '10px', md: 1, lg: 1 },
+          mb: { xs: '-5px' }
+        }}
+      >
+        <ListItemIcon sx={{ marginLeft: 'auto', height: 20 }}>
+          <CloseIcon
+            fontSize="small"
+            aria-label="Close icon"
+            sx={{ minWidth: { xs: 50, sm: 50, md: 50, lg: 50 } }}
+          />
+        </ListItemIcon>
+      </MenuItem>
+      <Divider />
+      <MenuItem
         key="settings"
         onClick={() => {
           setAppSettings((old) => ({ ...old, open: true }));
           handleClose();
         }}
+        tabIndex={0}
       >
         <ListItemIcon>
           <SettingsIcon fontSize="small" aria-label="Settings Menu" />
@@ -58,6 +82,7 @@ export default function UserMenu({ anchorEl, open, handleClose }: Props) {
         <ListItemText>Settings</ListItemText>
       </MenuItem>
       <MenuItem
+        tabIndex={0}
         key="logout"
         onClick={() => {
           // redirect to IdP logout URL
@@ -73,21 +98,6 @@ export default function UserMenu({ anchorEl, open, handleClose }: Props) {
           />
         </ListItemIcon>
         <ListItemText>Logout</ListItemText>
-      </MenuItem>
-      <MenuItem
-        key="close"
-        onClick={() => {
-          handleClose();
-        }}
-      >
-        <ListItemIcon>
-          <CloseIcon
-            style={{ paddingLeft: 0 }}
-            fontSize="small"
-            aria-label="close settings"
-          />
-        </ListItemIcon>
-        <ListItemText>Close</ListItemText>
       </MenuItem>
     </>
   );
@@ -135,7 +145,8 @@ export default function UserMenu({ anchorEl, open, handleClose }: Props) {
   }, [] as React.ReactNode[]);
 
   return (
-    <Menu
+    <Popover
+      tabIndex={0}
       anchorEl={anchorEl}
       id="account-menu"
       open={open}
@@ -155,19 +166,8 @@ export default function UserMenu({ anchorEl, open, handleClose }: Props) {
             width: 32,
             height: 32,
             ml: -0.5,
-            mr: 1
-          },
-          '&:before': {
-            content: '""',
-            display: 'block',
-            position: 'absolute',
-            top: 0,
-            right: 14,
-            width: 10,
-            height: 10,
-            bgcolor: 'background.default',
-            transform: 'translateY(-50%) rotate(45deg)',
-            zIndex: 0
+            mr: 1,
+            tabIndex: 0
           }
         }
       }}
@@ -175,6 +175,6 @@ export default function UserMenu({ anchorEl, open, handleClose }: Props) {
       anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
     >
       {itemsWithDivider}
-    </Menu>
+    </Popover>
   );
 }

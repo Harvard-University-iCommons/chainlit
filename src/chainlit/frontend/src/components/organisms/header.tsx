@@ -3,14 +3,17 @@ import { useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 
+import CloseIcon from '@mui/icons-material/Close';
 import MenuIcon from '@mui/icons-material/Menu';
 import {
   AppBar,
   Box,
   Button,
+  Divider,
   IconButton,
-  Menu,
+  ListItemIcon,
   MenuItem,
+  Popover,
   Stack,
   Toolbar,
   useTheme
@@ -71,7 +74,9 @@ const styleOverrides = {
         theme.palette.mode === 'dark'
           ? huitColorPaletteV3.white
           : theme.palette.primary.light
-    }
+    },
+    marginTop: 1,
+    marginBottom: 1
   }
 };
 
@@ -161,8 +166,7 @@ function Nav({ hasDb, hasReadme }: NavProps) {
         >
           <MenuIcon />
         </IconButton>
-        <Menu
-          autoFocus
+        <Popover
           anchorEl={anchorEl}
           open={open}
           onClose={() => setOpen(false)}
@@ -184,23 +188,41 @@ function Nav({ hasDb, hasReadme }: NavProps) {
           anchorOrigin={{ vertical: 'top', horizontal: 'left' }}
           transformOrigin={{ vertical: 'bottom', horizontal: 'left' }}
         >
-          {tabs.map((t, index) => {
+          <MenuItem
+            key="close"
+            aria-label="Close navigation menu"
+            onClick={() => {
+              setOpen(false);
+            }}
+            tabIndex={0}
+            sx={{ pr: 0, pb: 0, pt: { xs: 0, sm: 1 }, mt: '-5px', mb: '-5px' }}
+          >
+            <ListItemIcon sx={{ marginLeft: 'auto', height: 20 }}>
+              <CloseIcon
+                fontSize="small"
+                aria-label="Close icon"
+                sx={{ minWidth: '40px' }}
+              />
+            </ListItemIcon>
+          </MenuItem>
+          <Divider />
+          {tabs.map((t) => {
             const active = location.pathname === t.to;
             return active ? (
-              <ActiveMenuItem {...t} tabIndex={index} />
+              <ActiveMenuItem {...t} tabIndex={0} />
             ) : (
               <MenuItem
                 sx={styleOverrides.inactive}
                 key={t.to}
                 component={Link}
                 to={t.to}
-                tabIndex={index}
+                tabIndex={0}
               >
                 {t.label}
               </MenuItem>
             );
           })}
-        </Menu>
+        </Popover>
       </>
     );
   } else {
