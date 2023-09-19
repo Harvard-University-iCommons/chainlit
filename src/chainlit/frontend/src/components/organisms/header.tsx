@@ -138,7 +138,7 @@ function Nav({ hasDb, hasReadme }: NavProps) {
 
   tabs.push({
     to: 'https://huit.harvard.edu/',
-    label: 'Help',
+    label: 'Get help',
     target: '_blank'
   });
 
