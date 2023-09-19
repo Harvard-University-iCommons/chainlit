@@ -5,11 +5,14 @@ import { useRef, useState } from 'react';
 import { useRecoilState } from 'recoil';
 
 import { AutoDelete } from '@mui/icons-material';
+import CloseIcon from '@mui/icons-material/Close';
 import KeyboardDoubleArrowUpIcon from '@mui/icons-material/KeyboardDoubleArrowUp';
 import {
+  Box,
+  Divider,
   IconButton,
-  Menu,
   MenuItem,
+  Popover,
   Stack,
   Tooltip,
   Typography
@@ -74,28 +77,44 @@ export default function HistoryButton({ onClick }: Props) {
   const toggleChatHistoryMenu = (open: boolean) =>
     setChatHistory((old) => ({ ...old, open }));
 
+  const toggleOnKeyDown = (code: string) =>
+    code === 'Enter' || code === 'Space'
+      ? toggleChatHistoryMenu(!chatHistory.open)
+      : null;
+
   const header = (
-    // @ts-ignore
-    <Stack
-      disabled
-      key="title"
-      direction="row"
-      p={1}
-      justifyContent="space-between"
-      alignItems="center"
-    >
+    <Box>
+      <Stack
+        key="title"
+        sx={{
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          pt: 1
+        }}
+      >
+        <IconButton
+          aria-label="close show history"
+          onClick={() => toggleChatHistoryMenu(false)}
+          onKeyDown={(event) => toggleOnKeyDown(event.code)}
+        >
+          <CloseIcon />
+        </IconButton>
+
+        <IconButton
+          onClick={() => setChatHistory((old) => ({ ...old, messages: [] }))}
+        >
+          <AutoDelete />
+        </IconButton>
+      </Stack>
       <Typography
         color="text.primary"
-        sx={{ fontSize: '14px', fontWeight: 700 }}
+        sx={{ fontSize: '20px', fontWeight: 500, padding: 1 }}
       >
         Last messages
       </Typography>
-      <IconButton
-        onClick={() => setChatHistory((old) => ({ ...old, messages: [] }))}
-      >
-        <AutoDelete />
-      </IconButton>
-    </Stack>
+      <Divider />
+    </Box>
   );
 
   const empty =
@@ -176,6 +195,7 @@ export default function HistoryButton({ onClick }: Props) {
               alignItems: 'baseline',
               borderRadius: '4px'
             }}
+            tabIndex={0}
           >
             <Typography
               color="text.primary"
@@ -201,8 +221,7 @@ export default function HistoryButton({ onClick }: Props) {
   }
 
   const menu = anchorEl ? (
-    <Menu
-      autoFocus
+    <Popover
       anchorEl={anchorEl}
       open={chatHistory.open}
       onClose={() => toggleChatHistoryMenu(false)}
@@ -227,7 +246,7 @@ export default function HistoryButton({ onClick }: Props) {
       transformOrigin={{ vertical: 'bottom', horizontal: 'left' }}
     >
       {menuEls}
-    </Menu>
+    </Popover>
   ) : null;
 
   return (
@@ -238,6 +257,8 @@ export default function HistoryButton({ onClick }: Props) {
           color="inherit"
           onClick={() => toggleChatHistoryMenu(!chatHistory.open)}
           ref={ref}
+          onKeyDown={(event) => toggleOnKeyDown(event.code)}
+          aria-label="show history"
         >
           <KeyboardDoubleArrowUpIcon />
         </IconButton>
