@@ -1,4 +1,4 @@
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 
 import CloseIcon from '@mui/icons-material/Close';
 import DarkModeOutlined from '@mui/icons-material/DarkModeOutlined';
@@ -18,10 +18,11 @@ import {
 
 import Switch from 'components/atoms/switch';
 
-import { settingsState } from 'state/settings';
+import { settingsState, versionState } from 'state/settings';
 
 export default function SettingsModal() {
   const [settings, setSettings] = useRecoilState(settingsState);
+  const { version } = useRecoilValue(versionState);
   const handleClose = () => setSettings((old) => ({ ...old, open: false }));
   return (
     <Dialog
@@ -107,6 +108,7 @@ export default function SettingsModal() {
               />
             </Box>
           </ListItem>
+          {version ? <ListItem> Version: {version} </ListItem> : ''}
         </List>
       </DialogContent>
     </Dialog>
