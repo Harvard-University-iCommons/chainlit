@@ -13,7 +13,7 @@ export default function WaterMark() {
     <>
       <Box
         sx={{
-          display: { xs: 'inline', md: 'flex', lg: 'flex' },
+          display: { xs: 'inline', sm: 'inline', md: 'inline', lg: 'flex' },
           justifyContent: 'center',
           mx: { xs: '5px' },
           fontWeight: 500

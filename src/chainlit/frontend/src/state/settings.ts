@@ -1,4 +1,6 @@
-import { atom } from 'recoil';
+import { atom, selector } from 'recoil';
+
+import { wsEndpoint } from '../api';
 
 type ThemeVariant = 'dark' | 'light';
 
@@ -23,4 +25,22 @@ export const settingsState = atom<{
     hideCot: false,
     theme
   }
+});
+
+export const versionState = atom<{
+  version: string;
+}>({
+  key: 'version',
+  default: selector({
+    key: 'version/default',
+    get: async () => {
+      const res = await fetch(`${wsEndpoint}/version`, {
+        headers: {
+          'content-type': 'application/json'
+        },
+        method: 'GET'
+      });
+      return res.json();
+    }
+  })
 });
