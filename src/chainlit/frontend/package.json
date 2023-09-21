@@ -19,6 +19,7 @@
     "@mui/icons-material": "^5.11.9",
     "@mui/lab": "^5.0.0-alpha.122",
     "@mui/material": "^5.11.10",
+    "aws-rum-web": "^1.14.0",
     "draft-js": "^0.11.7",
     "formik": "^2.2.9",
     "lodash": "^4.17.21",
