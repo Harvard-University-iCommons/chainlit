@@ -21,7 +21,7 @@ export default function StopButton() {
   };
 
   return (
-    <Box margin="auto">
+    <Box margin="auto" aria-live="polite">
       <GreyButton
         id="stop-button"
         startIcon={<CloseIcon />}

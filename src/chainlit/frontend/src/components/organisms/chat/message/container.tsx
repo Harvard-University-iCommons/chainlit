@@ -1,9 +1,15 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { useRecoilValue } from 'recoil';
 
 import { Box } from '@mui/material';
 
 import { IAction } from 'state/action';
-import { IMessage, INestedMessage } from 'state/chat';
+import {
+  IMessage,
+  INestedMessage,
+  chatToolValueState,
+  loadingState
+} from 'state/chat';
 import { IMessageElement } from 'state/element';
 
 import Messages from './messages';
@@ -99,7 +105,9 @@ const MessageContainer = ({
 }: Props) => {
   const ref = useRef<HTMLDivElement>();
   const nestedMessages = nestMessages(messages);
-
+  const [lastMessage, setLastMessage] = useState({}) as any;
+  const loading = useRecoilValue(loadingState);
+  const tool = useRecoilValue(chatToolValueState);
   useEffect(() => {
     if (!ref.current || !autoScroll) {
       return;
@@ -114,6 +122,17 @@ const MessageContainer = ({
     const atBottom = scrollTop + clientHeight >= scrollHeight - 10;
     setAutoScroll(atBottom);
   };
+
+  const usingToolText = tool.length > 0 ? `Using ${tool}` : 'Running';
+
+  useEffect(() => {
+    if (
+      nestedMessages.length > 0 &&
+      lastMessage.content !== nestedMessages[nestedMessages.length - 1].content
+    ) {
+      setLastMessage(nestedMessages[nestedMessages.length - 1]);
+    }
+  });
 
   return (
     <Box
@@ -131,6 +150,23 @@ const MessageContainer = ({
         elements={elements}
         actions={actions}
       />
+      <Box
+        aria-live="assertive"
+        aria-atomic={true}
+        id="chat-al-region"
+        style={{
+          border: 0,
+          clip: 'rect(0 0 0 0)',
+          height: '1px',
+          margin: '-1px',
+          overflow: 'hidden',
+          padding: 0,
+          width: '1px',
+          position: 'absolute'
+        }}
+      >
+        {lastMessage && !loading ? lastMessage.content : usingToolText}
+      </Box>
     </Box>
   );
 };
