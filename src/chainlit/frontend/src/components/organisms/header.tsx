@@ -167,6 +167,7 @@ function Nav({ hasDb, hasReadme }: NavProps) {
           <MenuIcon />
         </IconButton>
         <Popover
+          key="nav dropdown"
           anchorEl={anchorEl}
           open={open}
           onClose={() => setOpen(false)}

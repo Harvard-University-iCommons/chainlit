@@ -144,3 +144,9 @@ export const chatSettingsValueState = atom({
   key: 'ChatSettingsValue',
   default: chatSettingsDefaultValueSelector
 });
+
+export const chatToolValueState = atom({
+  key: 'chatToolValueState',
+  dangerouslyAllowMutability: true,
+  default: ''
+});

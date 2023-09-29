@@ -1,4 +1,5 @@
-import { useRecoilValue } from 'recoil';
+import { useEffect } from 'react';
+import { useRecoilState, useRecoilValue } from 'recoil';
 
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -6,7 +7,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 import GreyButton from 'components/atoms/buttons/greyButton';
 
-import { INestedMessage } from 'state/chat';
+import { INestedMessage, chatToolValueState } from 'state/chat';
 import { settingsState } from 'state/settings';
 
 interface Props {
@@ -23,6 +24,7 @@ export default function DetailsButton({
   loading
 }: Props) {
   const { hideCot } = useRecoilValue(settingsState);
+  const [toolValue, setToolValue] = useRecoilState(chatToolValueState);
 
   const nestedCount = message.subMessages?.length;
   const nested = !!nestedCount;
@@ -30,6 +32,12 @@ export default function DetailsButton({
   const tool = nested
     ? message.subMessages![nestedCount - 1].author
     : undefined;
+
+  useEffect(() => {
+    if (tool && tool !== toolValue) {
+      setToolValue(tool);
+    }
+  });
 
   const isRunningEmptyStep = loading && !message.content;
   const isRunningUserMessage = loading && message.authorIsUser;

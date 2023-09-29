@@ -222,6 +222,7 @@ export default function HistoryButton({ onClick }: Props) {
 
   const menu = anchorEl ? (
     <Popover
+      key="menu"
       anchorEl={anchorEl}
       open={chatHistory.open}
       onClose={() => toggleChatHistoryMenu(false)}
