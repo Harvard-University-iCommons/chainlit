@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 
+import FileUploadIcon from '@mui/icons-material/FileUpload';
 import SendIcon from '@mui/icons-material/Telegram';
 import TuneIcon from '@mui/icons-material/Tune';
 import { IconButton, TextField } from '@mui/material';
@@ -114,6 +115,15 @@ const Input = ({ onSubmit, onReply }: Props) => {
     </IconButton>
   );
 
+  const fileButton = (
+    <IconButton
+      color="inherit"
+      onClick={() => console.log('file button clicked')}
+    >
+      <FileUploadIcon aria-label="Upload a file" />
+    </IconButton>
+  );
+
   return (
     <TextField
       inputRef={ref}
@@ -146,6 +156,7 @@ const Input = ({ onSubmit, onReply }: Props) => {
             sx={{ mr: 1, color: 'text.secondary' }}
           >
             {endAdornment}
+            {fileButton}
           </InputAdornment>
         )
       }}
