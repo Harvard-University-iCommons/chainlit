@@ -14,6 +14,7 @@ import {
   sessionState
 } from 'state/chat';
 import { chatHistoryState } from 'state/chatHistory';
+import { sessionIdState } from 'state/user';
 
 import HistoryButton from '../history';
 
@@ -43,6 +44,8 @@ const Input = ({ onSubmit, onReply }: Props) => {
 
   const socketOk = session?.socket && !session?.error;
   const disabled = !socketOk || loading || askUser?.spec.type === 'file';
+
+  const sessionId = useRecoilValue(sessionIdState);
 
   useEffect(() => {
     if (ref.current && !loading && !disabled) {
@@ -119,10 +122,13 @@ const Input = ({ onSubmit, onReply }: Props) => {
     <Tooltip title="Upload a file">
       <IconButton
         color="inherit"
-        onClick={() =>
-          console.log(
-            'file button clicked - this is where we need to set the message to /file and submit()'
-          )
+        onClick={async () =>
+          await fetch(`/upload/${sessionId}`, {
+            headers: {
+              'content-type': 'application/json'
+            },
+            method: 'GET'
+          })
         }
       >
         <FileUploadIcon aria-label="Upload a file" />
@@ -153,6 +159,7 @@ const Input = ({ onSubmit, onReply }: Props) => {
             sx={{ ml: 1, color: 'text.secondary' }}
             position="start"
           >
+            {fileButton}
             {startAdornment}
           </InputAdornment>
         ),
