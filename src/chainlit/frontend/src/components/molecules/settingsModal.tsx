@@ -9,6 +9,7 @@ import {
   Dialog,
   DialogContent,
   IconButton,
+  Link,
   List,
   ListItem,
   ListItemIcon,
@@ -108,7 +109,22 @@ export default function SettingsModal() {
               />
             </Box>
           </ListItem>
-          {version ? <ListItem> Version: {version} </ListItem> : ''}
+          {version ? (
+            <ListItem>
+              {' '}
+              Version: {version} (
+              <Link
+                href="https://harvard.service-now.com/ithelp?id=kb_article&sys_id=8840006747e1f950453d7134846d4397"
+                target="_blank"
+                aria-label="Release notes"
+              >
+                release notes
+              </Link>
+              )
+            </ListItem>
+          ) : (
+            ''
+          )}
         </List>
       </DialogContent>
     </Dialog>
