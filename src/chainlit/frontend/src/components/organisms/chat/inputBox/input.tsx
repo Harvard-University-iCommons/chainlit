@@ -4,7 +4,7 @@ import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import FileUploadIcon from '@mui/icons-material/FileUpload';
 import SendIcon from '@mui/icons-material/Telegram';
 import TuneIcon from '@mui/icons-material/Tune';
-import { IconButton, TextField, Tooltip } from '@mui/material';
+import { Box, IconButton, TextField, Tooltip } from '@mui/material';
 import InputAdornment from '@mui/material/InputAdornment';
 
 import {
@@ -130,7 +130,17 @@ const Input = ({ onSubmit, onReply }: Props) => {
             method: 'GET'
           })
         }
+        aria-describedby="file-upload-description"
       >
+        <Box
+          component="span"
+          id="file-upload-description"
+          sx={{ textIndent: '-100000px' }}
+        >
+          A browse file button will appear in the chat history. To select the
+          file you would like to upload navigate to the chat history and use the
+          browse file button.
+        </Box>
         <FileUploadIcon aria-label="Upload a file" />
       </IconButton>
     </Tooltip>
