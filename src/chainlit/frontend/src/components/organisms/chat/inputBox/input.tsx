@@ -137,9 +137,9 @@ const Input = ({ onSubmit, onReply }: Props) => {
           id="file-upload-description"
           sx={{ textIndent: '-100000px' }}
         >
-          A browse file button will appear in the chat history. To select the
+          A browse files button will appear in the chat history. To select the
           file you would like to upload navigate to the chat history and use the
-          browse file button.
+          browse files button.
         </Box>
         <FileUploadIcon aria-label="Upload a file" />
       </IconButton>
