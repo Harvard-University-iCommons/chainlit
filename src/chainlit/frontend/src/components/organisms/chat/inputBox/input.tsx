@@ -169,7 +169,6 @@ const Input = ({ onSubmit, onReply }: Props) => {
             sx={{ mr: 1, color: 'text.secondary' }}
           >
             {endAdornment}
-            {fileButton}
           </InputAdornment>
         )
       }}
