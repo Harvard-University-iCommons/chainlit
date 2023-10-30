@@ -144,7 +144,6 @@ export default function ConversationTable() {
           alignItems: 'center',
           borderBottom: (theme) => `1px solid ${theme.palette.divider}`
         }}
-        aria-live="polite"
       >
         <RowText text={conversation.id} col={columns['Id']} />
         <RowText

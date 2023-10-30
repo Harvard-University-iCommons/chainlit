@@ -6,7 +6,7 @@ import ThumbDownAlt from '@mui/icons-material/ThumbDownAlt';
 import ThumbDownAltOutlined from '@mui/icons-material/ThumbDownAltOutlined';
 import ThumbUpAlt from '@mui/icons-material/ThumbUpAlt';
 import ThumbUpAltOutlined from '@mui/icons-material/ThumbUpAltOutlined';
-import { IconButton, Stack, Tooltip } from '@mui/material';
+import { Checkbox, Stack, Tooltip } from '@mui/material';
 
 import { IMessage, messagesState } from 'state/chat';
 import { clientState } from 'state/client';
@@ -21,8 +21,6 @@ export default function FeedbackButtons({ message }: Props) {
   const messages = useRecoilValue(messagesState);
   const [feedback, setFeedback] = useState(message.humanFeedback || 0);
   const client = useRecoilValue(clientState);
-  const DownIcon = feedback === -1 ? ThumbDownAlt : ThumbDownAltOutlined;
-  const UpIcon = feedback === 1 ? ThumbUpAlt : ThumbUpAltOutlined;
 
   const onClick = async (value: number) => {
     try {
@@ -47,22 +45,28 @@ export default function FeedbackButtons({ message }: Props) {
   return (
     <Stack direction="row" spacing={1}>
       <Tooltip title="Negative feedback">
-        <IconButton
+        <Checkbox
           className={`negative-feedback-${feedback === -1 ? 'on' : 'off'}`}
           onClick={() => onClick(feedback === -1 ? 0 : -1)}
           size="small"
-        >
-          <DownIcon sx={{ width: size, height: size }} />
-        </IconButton>
+          aria-checked={feedback == -1}
+          aria-label="negative feedback"
+          checked={feedback == -1}
+          icon={<ThumbDownAltOutlined sx={{ width: size, height: size }} />}
+          checkedIcon={<ThumbDownAlt sx={{ width: size, height: size }} />}
+        />
       </Tooltip>
       <Tooltip title="Positive feedback">
-        <IconButton
+        <Checkbox
           className={`positive-feedback-${feedback === 1 ? 'on' : 'off'}`}
           onClick={() => onClick(feedback === 1 ? 0 : 1)}
           size="small"
-        >
-          <UpIcon sx={{ width: size, height: size }} />
-        </IconButton>
+          aria-checked={feedback == 1}
+          aria-label="positive feedback"
+          checked={feedback == 1}
+          icon={<ThumbUpAltOutlined sx={{ width: size, height: size }} />}
+          checkedIcon={<ThumbUpAlt sx={{ width: size, height: size }} />}
+        />
       </Tooltip>
     </Stack>
   );
