@@ -130,7 +130,15 @@ const MessageContainer = ({
       nestedMessages.length > 0 &&
       lastMessage.content !== nestedMessages[nestedMessages.length - 1].content
     ) {
-      setLastMessage(nestedMessages[nestedMessages.length - 1]);
+      const message = { ...nestedMessages[nestedMessages.length - 1] };
+      const targetSubstring = `**${message.author}:**`;
+      if (message.content?.includes(targetSubstring)) {
+        message.content = message.content?.replace(
+          targetSubstring,
+          `${message.author}:`
+        );
+      }
+      setLastMessage(message);
     }
   });
 
