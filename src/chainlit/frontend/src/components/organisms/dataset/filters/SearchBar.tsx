@@ -66,7 +66,7 @@ export default function SearchBar() {
   };
 
   return (
-    <Search>
+    <Search aria-live="polite">
       <SearchIconWrapper
         sx={{
           position: 'absolute',
