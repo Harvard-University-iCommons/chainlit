@@ -15,6 +15,7 @@ import {
 import { chatHistoryState } from 'state/chatHistory';
 
 import HistoryButton from '../history';
+import UploadButton from './inputUploadButton';
 
 interface Props {
   onSubmit: (message: string) => void;
@@ -146,6 +147,7 @@ const Input = ({ onSubmit, onReply }: Props) => {
             sx={{ mr: 1, color: 'text.secondary' }}
           >
             {endAdornment}
+            <UploadButton />
           </InputAdornment>
         )
       }}
