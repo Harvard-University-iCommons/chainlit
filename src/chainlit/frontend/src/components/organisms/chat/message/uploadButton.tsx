@@ -11,6 +11,7 @@ import { useRecoilValue } from 'recoil';
 
 import CloudUploadOutlined from '@mui/icons-material/CloudUploadOutlined';
 import { LoadingButton } from '@mui/lab';
+import { Link } from '@mui/material';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 
@@ -93,35 +94,44 @@ function _UploadButton({ askUser }: Props) {
   });
 
   return (
-    <Stack
-      sx={{
-        width: '100%',
-        borderRadius: 1,
-        backgroundColor: (theme) =>
-          theme.palette.mode === 'dark' ? grey[800] : grey[200],
-        boxSizing: 'border-box'
-      }}
-      direction="row"
-      alignItems="center"
-      padding={2}
-      {...getRootProps({ className: 'dropzone' })}
-    >
-      <input {...getInputProps()} />
-      <CloudUploadOutlined fontSize="large" />
-      <Stack ml={2}>
-        <Typography color="text.primary">Drag and drop files here</Typography>
-        <Typography variant="caption" color="text.secondary">
-          Limit {maxSize}mb.
-        </Typography>
-      </Stack>
-      <LoadingButton
-        id={uploading ? 'upload-button-loading' : 'upload-button'}
-        loading={uploading}
-        sx={{ ml: 'auto !important' }}
-        variant="contained"
+    <Stack>
+      <Stack
+        sx={{
+          width: '100%',
+          borderRadius: 1,
+          backgroundColor: (theme) =>
+            theme.palette.mode === 'dark' ? grey[800] : grey[200],
+          boxSizing: 'border-box'
+        }}
+        direction="row"
+        alignItems="center"
+        padding={2}
+        {...getRootProps({ className: 'dropzone' })}
       >
-        Browse Files
-      </LoadingButton>
+        <input {...getInputProps()} />
+        <CloudUploadOutlined fontSize="large" />
+        <Stack ml={2}>
+          <Typography color="text.primary">Drag and drop files here</Typography>
+        </Stack>
+        <LoadingButton
+          id={uploading ? 'upload-button-loading' : 'upload-button'}
+          loading={uploading}
+          sx={{ ml: 'auto !important' }}
+          variant="contained"
+        >
+          Browse Files
+        </LoadingButton>
+      </Stack>
+      <Typography color="text.primary">
+        <Link
+          href="https://harvard.service-now.com/ithelp?id=kb_article&sys_id=9526e87897d2791070b03d700153af83"
+          target="_blank"
+          aria-label="file upload documentation"
+        >
+          Information on using file uploads, including size limits and
+          acceptable file types.
+        </Link>
+      </Typography>
     </Stack>
   );
 }
