@@ -4,7 +4,18 @@ import { FixedSizeList } from 'react-window';
 import InfiniteLoader from 'react-window-infinite-loader';
 import { useRecoilValue } from 'recoil';
 
-import { Alert, Box, Stack, Typography } from '@mui/material';
+import {
+  Alert,
+  Box,
+  Stack,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Typography
+} from '@mui/material';
 
 import { IChat } from 'state/chat';
 import { clientState } from 'state/client';
@@ -117,81 +128,72 @@ export default function ConversationTable() {
     }
   };
 
-  const RowText = ({ text, col }: any) => {
-    return (
-      <Typography
-        noWrap
-        sx={{
-          width: col.width,
-          minWidth: col.minWidth,
-          fontSize: '0.875rem'
-        }}
-        color="text.primary"
-      >
-        {text}
-      </Typography>
-    );
-  };
-
   const Row = ({ index, style }: any) => {
     const conversation = conversations[index];
+    const overflowHidden = {
+      whiteSpace: 'nowrap',
+      textOverflow: 'ellipsis',
+      display: 'block',
+      overflow: 'hidden'
+    };
     return (
-      <Box
+      <TableRow
         className="conversation-row"
         style={style}
         sx={{
           display: 'flex',
-          alignItems: 'center',
           borderBottom: (theme) => `1px solid ${theme.palette.divider}`
         }}
       >
-        <RowText text={conversation.id} col={columns['Id']} />
-        <RowText
-          text={conversation.author?.email || 'LocalUser'}
-          col={columns['Author']}
-        />
-        <RowText
-          text={conversation.messages[0]?.content}
-          col={columns['Input']}
-        />
-        <RowText
-          text={serializeDate(conversation.createdAt)}
-          col={columns['Date']}
-        />
-        <Stack
-          direction="row"
-          sx={{
-            width: columns['Actions'].width,
-            minWidth: columns['Actions'].minWidth
-          }}
-        >
-          <OpenConversationButton conversationId={conversation.id} />
-          <DownloadConversationButton conversationId={conversation.id} />
-          <DeleteConversationButton
-            conversationId={conversation.id}
-            onDelete={() => refetchConversations()}
-          />
-        </Stack>
-      </Box>
+        <TableCell align="left" sx={{ ...overflowHidden, ...columns.Id }}>
+          {' '}
+          {conversation.id}{' '}
+        </TableCell>
+        <TableCell align="left" sx={{ ...overflowHidden, ...columns.Author }}>
+          {conversation.author?.email}
+        </TableCell>
+        <TableCell sx={{ ...overflowHidden, ...columns.Input }} align="left">
+          {conversation.messages[0]?.content}
+        </TableCell>
+        <TableCell sx={{ ...columns.Date }} align="left">
+          {serializeDate(conversation.createdAt)}
+        </TableCell>
+        <TableCell align="right" sx={{ ...columns.Actions }}>
+          <Stack direction="row">
+            <OpenConversationButton conversationId={conversation.id} />
+            <DownloadConversationButton conversationId={conversation.id} />
+            <DeleteConversationButton
+              conversationId={conversation.id}
+              onDelete={() => refetchConversations()}
+            />
+          </Stack>
+        </TableCell>
+      </TableRow>
     );
   };
 
-  const Header = Object.entries(columns).map(([key, value]) => (
-    <Typography
-      key={key}
-      sx={{
-        fontSize: '0.875rem',
-        width: value.width,
-        minWidth: value.minWidth
-      }}
-      color="primary"
-    >
-      {key}
-    </Typography>
-  ));
+  const Header = (
+    <TableHead>
+      <TableRow>
+        {Object.entries(columns).map(([key, value]) => (
+          <TableCell
+            key={key}
+            sx={{
+              fontSize: '0.875rem',
+              width: value.width,
+              minWidth: value.minWidth
+            }}
+            color="primary"
+          >
+            {key}
+          </TableCell>
+        ))}
+      </TableRow>
+    </TableHead>
+  );
 
   return (
-    <Box sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+    <TableContainer sx={{ height: '100%' }}>
       <Box
         sx={{
           display: 'flex',
@@ -199,33 +201,36 @@ export default function ConversationTable() {
           height: '40px',
           borderBottom: (theme) => `1px solid ${theme.palette.divider}`
         }}
-      >
+      ></Box>
+      <Table sx={{ height: '100%' }}>
         {Header}
-      </Box>
-      <Box flexGrow={1}>
-        <AutoSizer>
-          {({ height, width }) => (
-            <InfiniteLoader
-              isItemLoaded={(index) => !!conversations[index]}
-              itemCount={prevPageInfo?.hasNextPage ? itemCount + 1 : itemCount}
-              loadMoreItems={loadMoreItems}
-            >
-              {({ onItemsRendered, ref }) => (
-                <FixedSizeList
-                  height={height!}
-                  width={width!}
-                  itemSize={55}
-                  itemCount={itemCount}
-                  onItemsRendered={onItemsRendered}
-                  ref={ref}
-                >
-                  {Row}
-                </FixedSizeList>
-              )}
-            </InfiniteLoader>
-          )}
-        </AutoSizer>
-      </Box>
-    </Box>
+        <TableBody>
+          <AutoSizer>
+            {({ height, width }) => (
+              <InfiniteLoader
+                isItemLoaded={(index) => !!conversations[index]}
+                itemCount={
+                  prevPageInfo?.hasNextPage ? itemCount + 1 : itemCount
+                }
+                loadMoreItems={loadMoreItems}
+              >
+                {({ onItemsRendered, ref }) => (
+                  <FixedSizeList
+                    height={height!}
+                    width={width!}
+                    itemSize={55}
+                    itemCount={itemCount}
+                    onItemsRendered={onItemsRendered}
+                    ref={ref}
+                  >
+                    {Row}
+                  </FixedSizeList>
+                )}
+              </InfiniteLoader>
+            )}
+          </AutoSizer>
+        </TableBody>
+      </Table>
+    </TableContainer>
   );
 }
