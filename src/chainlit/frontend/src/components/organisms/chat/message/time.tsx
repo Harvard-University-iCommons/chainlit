@@ -9,7 +9,7 @@ interface Props {
 export default function MessageTime({ timestamp }: Props) {
   if (!timestamp) return null;
   const dateOptions: Intl.DateTimeFormatOptions = {
-    hour: '2-digit',
+    hour: 'numeric',
     minute: '2-digit',
     second: '2-digit'
   };

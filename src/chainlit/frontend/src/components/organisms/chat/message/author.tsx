@@ -15,7 +15,7 @@ interface Props {
   show?: boolean;
 }
 
-export const authorBoxWidth = 70;
+export const authorBoxWidth = 80;
 
 export default function Author({ message, show }: Props) {
   const getColorForName = useColorForName();
