@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { Box, Divider, Link, Stack, Typography } from '@mui/material';
+import { Divider, Link, Stack, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 
 export default function WaterMark() {

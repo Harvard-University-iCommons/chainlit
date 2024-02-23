@@ -126,13 +126,20 @@ function Nav({ hasDb, hasReadme }: NavProps) {
 
   const matches = useMediaQuery(theme.breakpoints.down('md'));
 
-  const tabs = [{ to: '/', label: 'Chat', target: '' }];
+  // Check if the user is on the landing page
+  const isLandingPage = location.pathname === '/landing-page';
 
-  if (hasDb) {
+  const tabs = [];
+
+  if (!isLandingPage) {
+    tabs.push({ to: '/', label: 'Chat', target: '' });
+  }
+
+  if (hasDb && !isLandingPage) {
     tabs.push({ to: '/dataset', label: 'History', target: '' });
   }
 
-  if (hasReadme) {
+  if (hasReadme && !isLandingPage) {
     tabs.push({ to: '/readme', label: 'Readme', target: '' });
   }
 
@@ -234,6 +241,9 @@ function Nav({ hasDb, hasReadme }: NavProps) {
 export default function Header() {
   const pSettings = useRecoilValue(projectSettingsState);
 
+  // Check if the user is on the landing page
+  const isLandingPage = location.pathname === '/landing-page';
+
   return (
     <AppBar elevation={0} color="transparent" position="static">
       <Toolbar
@@ -258,7 +268,7 @@ export default function Header() {
           spacing={1}
           color="text.primary"
         >
-          <NewChatButton />
+          {!isLandingPage && <NewChatButton />} {/* Conditionally render NewChatButton. */}
           <Box ml={1} />
           <GithubButton href={pSettings?.ui?.github} />
           <UserButton />
