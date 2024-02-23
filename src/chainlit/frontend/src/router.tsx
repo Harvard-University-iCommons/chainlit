@@ -7,6 +7,7 @@ import Design from 'pages/Design';
 import Element from 'pages/Element';
 import Env from 'pages/Env';
 import Home from 'pages/Home';
+import LandingPage from 'pages/LandingPage';
 import Login from 'pages/Login';
 import Page from 'pages/Page';
 import Readme from 'pages/Readme';
@@ -15,6 +16,10 @@ export const router = createBrowserRouter([
   {
     path: '/',
     element: <Home />
+  },
+  {
+    path: '/landing-page',
+    element: <LandingPage />
   },
   {
     path: '/readme',
