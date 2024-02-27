@@ -46,8 +46,9 @@ export const userSandboxState = atom<{
   key: 'projects',
   default: selector({
     key: 'projects/default',
-    get: async () => {
-      const res = await fetch(`${wsEndpoint}/projects`, {
+    get: async ({ get }) => {
+      const sessionId = get(sessionIdState); // Get sessionId
+      const res = await fetch(`${wsEndpoint}/projects/${sessionId}`, {
         headers: {
           'content-type': 'application/json'
         },
