@@ -35,7 +35,7 @@ export default function LandingPage() {
               <h1>Welcome to the AI Sandbox Landing Page!</h1>
               <div>
                 {/* Display projects as clickable links. If there are no projects, display message indicating no access. */}
-                {projects.length === 0 ? (
+                {projects && projects.length === 0 ? (
                   <p>You do not have access to any AI sandboxes.</p>
                 ) : (
                   <div>
