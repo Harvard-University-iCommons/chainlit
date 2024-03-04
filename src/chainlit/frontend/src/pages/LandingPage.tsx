@@ -15,9 +15,10 @@ import { sessionIdState } from 'state/user';
 export default function LandingPage() {
   const sessionId = useRecoilValue(sessionIdState);
   const [projects, setProjects] = useState([]);
+  const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
+  const errorMessage = "An error occurred. Could not fetch AI sandboxes.";
 
-  console.log(`js----> Session ID: ${sessionId}`)
 
   useEffect(() => {
     if (!sessionId) {
@@ -34,12 +35,18 @@ export default function LandingPage() {
             'Content-Type': 'application/json'
           }
         });
+        if (!response.ok) {
+          console.log('response:', response)
+          throw new Error('Failed to fetch projects.');
+        }
         const responseData = await response.json();
         setProjects(responseData.projects || []);
-        console.log('Response Data: ', responseData.projects); // Print projects data
+        setError(null); // Clear error state upon request success.
+        // console.log('Response Data: ', responseData.projects); // Print projects data
       } catch (error) {
         console.error('Error fetching data:', error);
         setProjects([]);
+        setError(error instanceof Error ? error.message : errorMessage); // Setting error message.
       }
     };
 
@@ -69,21 +76,28 @@ export default function LandingPage() {
             >
               <h1>Welcome to the AI Sandbox Landing Page!</h1>
               <div>
-                {/* Display projects as clickable links. If there are no projects, display message indicating no access. */}
-                {projects && projects.length === 0 ? (
-                  <p>You do not have access to any AI sandboxes.</p>
+                {/* Display error message if there's an error. */}
+                {error ? (
+                  <p>Error: {errorMessage}</p>
                 ) : (
                   <div>
-                    <p>AI Sandboxes you have access to:</p>
-                    <ul>
-                      {projects.map((project, index) => (
-                        <li key={index}>
-                          <a href={`/${project}`} tabIndex={0}>
-                            {project}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
+                    {/* Display projects as clickable links. */}
+                    {projects && projects.length === 0 ? (
+                      <p>You do not have access to any AI sandboxes.</p>
+                    ) : (
+                      <div>
+                        <p>AI Sandboxes you have access to:</p>
+                        <ul>
+                          {projects.map((project, index) => (
+                            <li key={index}>
+                              <a href={`/${project}`} tabIndex={0}>
+                                {project}
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
                   </div>
                 )}
               </div>
