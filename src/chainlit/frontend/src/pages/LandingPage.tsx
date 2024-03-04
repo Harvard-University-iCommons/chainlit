@@ -1,3 +1,6 @@
+import { wsEndpoint } from 'api';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 
 import Page from 'pages/Page';
@@ -7,10 +10,42 @@ import { Box } from '@mui/material';
 import Head from 'components/Head';
 import WaterMark from 'components/landing_page/landingPageWaterMark';
 
-import { userSandboxState } from 'state/user';
+import { sessionIdState } from 'state/user';
 
 export default function LandingPage() {
-  const { projects } = useRecoilValue(userSandboxState);
+  const sessionId = useRecoilValue(sessionIdState);
+  const [projects, setProjects] = useState([]);
+  const navigate = useNavigate();
+
+  console.log(`js----> Session ID: ${sessionId}`)
+
+  useEffect(() => {
+    if (!sessionId) {
+      // Redirect to login page if sessionId is not available.
+      navigate('/login');
+      return;
+    }
+
+    const fetchProjects = async () => {
+      try {
+        const response = await fetch(`${wsEndpoint}/projects/${sessionId}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+        const responseData = await response.json();
+        setProjects(responseData.projects || []);
+        console.log('Response Data: ', responseData.projects); // Print projects data
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        setProjects([]);
+      }
+    };
+
+    fetchProjects();
+  }, [sessionId, navigate]);
+
   return (
     <>
       <Head title="Landing Page" description="Landing Page" />
