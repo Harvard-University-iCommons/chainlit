@@ -17,8 +17,7 @@ export default function LandingPage() {
   const [projects, setProjects] = useState([]);
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
-  const errorMessage = "An error occurred. Could not fetch AI sandboxes.";
-
+  const errorMessage = 'An error occurred. Could not fetch AI sandboxes.';
 
   useEffect(() => {
     if (!sessionId) {
@@ -36,7 +35,7 @@ export default function LandingPage() {
           }
         });
         if (!response.ok) {
-          console.log('response:', response)
+          console.log('response:', response);
           throw new Error('Failed to fetch projects.');
         }
         const responseData = await response.json();
