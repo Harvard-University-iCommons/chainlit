@@ -20,3 +20,10 @@ async def main():
 async def get_version(request: Request):
     payload = {"version": "1.1.9999"}
     return JSONResponse(content=payload)
+
+
+@app.get("/projects/{session_id}")
+async def get_projects(request: Request, session_id: str):
+    print(f"----> Session ID: {session_id}")
+    payload = {"projects": ["p4"]}
+    return JSONResponse(content=payload)

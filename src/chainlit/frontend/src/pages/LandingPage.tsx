@@ -11,8 +11,11 @@ import Head from 'components/Head';
 import WaterMark from 'components/landing_page/landingPageWaterMark';
 
 import { sessionIdState } from 'state/user';
+// import { sessionState } from 'state/chat';
 
 export default function LandingPage() {
+  // const session = useRecoilValue(sessionState);
+  // const sessionId = session?.socket.id;
   const sessionId = useRecoilValue(sessionIdState);
   const [projects, setProjects] = useState([]);
   const [error, setError] = useState<string | null>(null);
