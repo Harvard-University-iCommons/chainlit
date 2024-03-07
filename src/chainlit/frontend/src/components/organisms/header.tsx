@@ -126,10 +126,12 @@ function Nav({ hasDb, hasReadme }: NavProps) {
 
   const matches = useMediaQuery(theme.breakpoints.down('md'));
 
-  // Check if the user is on the landing page
+  // Check if the user is on the landing page.
   const isLandingPage = location.pathname === '/landing-page';
 
   const tabs = [];
+
+  tabs.push({ to: '/landing-page', label: 'My projects', target: '' });
 
   if (!isLandingPage) {
     tabs.push({ to: '/', label: 'Chat', target: '' });
