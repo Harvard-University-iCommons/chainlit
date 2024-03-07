@@ -11,12 +11,14 @@ import Head from 'components/Head';
 import WaterMark from 'components/landing_page/landingPageWaterMark';
 
 import { sessionIdState } from 'state/user';
-// import { sessionState } from 'state/chat';
+import { sessionState } from 'state/chat';
 
 export default function LandingPage() {
-  // const session = useRecoilValue(sessionState);
+  const session = useRecoilValue(sessionState);
+  console.log("Session ---------------", session);
   // const sessionId = session?.socket.id;
   const sessionId = useRecoilValue(sessionIdState);
+  console.log("Session ID ---------------", sessionId);
   const [projects, setProjects] = useState([]);
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
@@ -38,15 +40,14 @@ export default function LandingPage() {
           }
         });
         if (!response.ok) {
-          console.log('response:', response);
-          throw new Error('Failed to fetch projects.');
+          console.log(response);
         }
         const responseData = await response.json();
         setProjects(responseData.projects || []);
         setError(null); // Clear error state upon request success.
-        // console.log('Response Data: ', responseData.projects); // Print projects data
+        // console.log('Response Data: ', responseData.projects); // Print projects data.
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error(error);
         setProjects([]);
         setError(error instanceof Error ? error.message : errorMessage); // Setting error message.
       }
@@ -92,7 +93,7 @@ export default function LandingPage() {
                         <ul>
                           {projects.map((project, index) => (
                             <li key={index}>
-                              <a href={`/${project}`} tabIndex={0}>
+                              <a href={`${project}.${'.sandbox.ai.huit.harvard.edu'}`} tabIndex={0}>
                                 {project}
                               </a>
                             </li>
