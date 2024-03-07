@@ -31,6 +31,7 @@ import WelcomeScreen from './welcomeScreen';
 
 const Chat = () => {
   const { user, isAuthenticated } = useAuth();
+  console.log("----------------", user, isAuthenticated);
   const session = useRecoilValue(sessionState);
   const askUser = useRecoilValue(askUserState);
   const [messages, setMessages] = useRecoilState(messagesState);
@@ -126,7 +127,11 @@ const Chat = () => {
         <TaskList tasklist={tasklist} isMobile={true} />
         {session?.error && (
           <Alert id="session-error" severity="error">
-            Please refresh the page and if the issue persists, contact the{' '}
+            Please refresh the page or navigate to your{' '}
+            <a href="/landing-page" aria-label="projects page">
+              projects page
+            </a>{' '}
+            to choose a project, and if the issue persists, contact the{' '}
             <a href="https://huit.harvard.edu/" aria-label="HUIT service desk">
               HUIT Service Desk.
             </a>
