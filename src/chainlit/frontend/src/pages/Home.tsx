@@ -9,7 +9,7 @@ export default function Home() {
   const navigate = useNavigate();
   const hostname = window.location.hostname;
 
-  // List of domains to redirect to the landing page
+  // List of domains to redirect to the landing page.
   const landingPageDomains = [
     'localhost',
     'sandbox.ai.huit.harvard.edu',
@@ -17,7 +17,7 @@ export default function Home() {
     'qa.sandbox.ai.huit.harvard.edu'
   ];
 
-  // Check if the hostname matches any of the landing page domains
+  // Check if the hostname matches any of the landing page domains.
   const isLandingPage = landingPageDomains.includes(hostname);
 
   useEffect(() => {

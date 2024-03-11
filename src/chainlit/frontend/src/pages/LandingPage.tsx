@@ -26,7 +26,7 @@ export default function LandingPage() {
           }
         });
         if (!response.ok) {
-          console.log(response);
+          // console.log(response);
         }
         const responseData = await response.json();
         setProjects(responseData.projects || []);
@@ -35,7 +35,7 @@ export default function LandingPage() {
       } catch (error) {
         console.error(error);
         setProjects([]);
-        setError(error instanceof Error ? error.message : errorMessage); // Setting error message.
+        setError(error instanceof Error ? error.message : errorMessage);
       }
     };
 
@@ -69,12 +69,12 @@ export default function LandingPage() {
               }}
             >
               <h1>Welcome to the AI Sandbox Landing Page!</h1>
-              <div>
+              <div  style={{ fontWeight: 'bold' }}>
                 {/* Display error message if there's an error. */}
                 {error ? (
                   <p>Error: {errorMessage}</p>
                 ) : (
-                  <div style={{ fontWeight: 'bold' }}>
+                  <div>
                     {/* Display projects as clickable links. */}
                     {projects && projects.length === 0 ? (
                       <p>You do not have access to any AI sandboxes.</p>
