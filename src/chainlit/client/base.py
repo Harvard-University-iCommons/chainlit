@@ -46,7 +46,6 @@ class UserDict(TypedDict):
     name: Optional[str]
     email: Optional[str]
     role: str
-    projects: Optional[List[str]]
 
 
 class ElementDict(TypedDict):
