@@ -1,6 +1,5 @@
 # This is a simple example of a chainlit app.
 
-from chainlit.session import Session
 from fastapi import Request
 from fastapi.responses import JSONResponse
 
