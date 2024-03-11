@@ -31,7 +31,6 @@ import WelcomeScreen from './welcomeScreen';
 
 const Chat = () => {
   const { user, isAuthenticated } = useAuth();
-  console.log("----------------", user, isAuthenticated);
   const session = useRecoilValue(sessionState);
   const askUser = useRecoilValue(askUserState);
   const [messages, setMessages] = useRecoilState(messagesState);

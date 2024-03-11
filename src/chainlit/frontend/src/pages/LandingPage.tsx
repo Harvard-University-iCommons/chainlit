@@ -1,39 +1,25 @@
 import { wsEndpoint } from 'api';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useRecoilValue } from 'recoil';
 
 import Page from 'pages/Page';
 
 import { Box } from '@mui/material';
 
 import Head from 'components/Head';
+import Sidebar from 'components/Sidebar';
 import WaterMark from 'components/landing_page/landingPageWaterMark';
 
-import { sessionIdState } from 'state/user';
-import { sessionState } from 'state/chat';
-
 export default function LandingPage() {
-  const session = useRecoilValue(sessionState);
-  console.log("Session ---------------", session);
-  // const sessionId = session?.socket.id;
-  const sessionId = useRecoilValue(sessionIdState);
-  console.log("Session ID ---------------", sessionId);
   const [projects, setProjects] = useState([]);
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
   const errorMessage = 'An error occurred. Could not fetch AI sandboxes.';
 
   useEffect(() => {
-    if (!sessionId) {
-      // Redirect to login page if sessionId is not available.
-      navigate('/login');
-      return;
-    }
-
     const fetchProjects = async () => {
       try {
-        const response = await fetch(`${wsEndpoint}/projects/${sessionId}`, {
+        const response = await fetch(`${wsEndpoint}/projects`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json'
@@ -54,17 +40,22 @@ export default function LandingPage() {
     };
 
     fetchProjects();
-  }, [sessionId, navigate]);
+  }, [navigate]);
+
+  // Get hostname from current URL.
+  const currentHostname = window.location.hostname;
 
   return (
     <>
-      <Head title="Landing Page" description="Landing Page" />
       <Page>
-        <Box sx={{ px: 2 }}>
-          <Box overflow="auto" flexGrow={1}>
+        <Box sx={{ px: 2, display: 'flex' }}>
+          <Sidebar />
+          <Box sx={{ overflow: 'auto', flexGrow: 1 }}>
+            <Head title="Landing Page" description="Landing Page" />
             <Box
-              id="welcome-screen"
+              id="landing-page"
               sx={{
+                minHeight: '100vh',
                 maxWidth: '60rem',
                 width: '100%',
                 m: 'auto',
@@ -83,7 +74,7 @@ export default function LandingPage() {
                 {error ? (
                   <p>Error: {errorMessage}</p>
                 ) : (
-                  <div>
+                  <div style={{ fontWeight: 'bold' }}>
                     {/* Display projects as clickable links. */}
                     {projects && projects.length === 0 ? (
                       <p>You do not have access to any AI sandboxes.</p>
@@ -93,7 +84,10 @@ export default function LandingPage() {
                         <ul>
                           {projects.map((project, index) => (
                             <li key={index}>
-                              <a href={`${project}.${'.sandbox.ai.huit.harvard.edu'}`} tabIndex={0}>
+                              <a
+                                href={`https://${project}.${currentHostname}`}
+                                tabIndex={0}
+                              >
                                 {project}
                               </a>
                             </li>
@@ -104,19 +98,20 @@ export default function LandingPage() {
                   </div>
                 )}
               </div>
+              <Box
+                justifyContent="center"
+                position="fixed"
+                width="100%"
+                gap={1}
+                py={2}
+                bottom={0}
+                maxWidth="60rem"
+                m="auto"
+                flexDirection="column"
+              >
+                <WaterMark />
+              </Box>
             </Box>
-          </Box>
-
-          <Box
-            display="flex"
-            justifyContent="center"
-            position="fixed"
-            width="100%"
-            gap={1}
-            py={2}
-            bottom={0}
-          >
-            <WaterMark />
           </Box>
         </Box>
       </Page>
