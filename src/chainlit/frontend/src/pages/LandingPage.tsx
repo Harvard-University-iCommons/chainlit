@@ -15,6 +15,15 @@ export default function LandingPage() {
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
   const errorMessage = 'An error occurred. Could not fetch AI sandboxes.';
+  
+  // Define allowed domains
+  const landingPageDomains = [
+    'localhost',
+    'sandbox.ai.huit.harvard.edu',
+    'dev.sandbox.ai.huit.harvard.edu',
+    'stage.sandbox.ai.huit.harvard.edu',
+    'qa.sandbox.ai.huit.harvard.edu'
+  ];
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -44,6 +53,18 @@ export default function LandingPage() {
 
   // Get hostname from current URL.
   const currentHostname = window.location.hostname;
+
+  // Find the most similar domain from landingPageDomains.
+  const getMatchingDomain = () => {
+    let matchingDomain = '';
+    for (const domain of landingPageDomains) {
+      if (currentHostname.endsWith(domain)) {
+        matchingDomain = domain;
+        break;
+      }
+    }
+    return matchingDomain;
+  };
 
   return (
     <>
@@ -85,7 +106,7 @@ export default function LandingPage() {
                           {projects.map((project, index) => (
                             <li key={index}>
                               <a
-                                href={`https://${project}.${currentHostname}`}
+                                href={`https://${project}.${getMatchingDomain() || currentHostname}`}
                                 tabIndex={0}
                               >
                                 {project}

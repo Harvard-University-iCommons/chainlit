@@ -14,6 +14,7 @@ export default function Home() {
     'localhost',
     'sandbox.ai.huit.harvard.edu',
     'dev.sandbox.ai.huit.harvard.edu',
+    'stage.sandbox.ai.huit.harvard.edu',
     'qa.sandbox.ai.huit.harvard.edu'
   ];
 
