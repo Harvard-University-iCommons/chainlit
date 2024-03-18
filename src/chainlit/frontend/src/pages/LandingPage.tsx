@@ -16,7 +16,6 @@ export default function LandingPage() {
   const navigate = useNavigate();
   const errorMessage = 'An error occurred. Could not fetch AI sandboxes.';
   
-  // Define allowed domains
   const landingPageDomains = [
     'localhost',
     'sandbox.ai.huit.harvard.edu',
