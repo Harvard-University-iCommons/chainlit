@@ -17,11 +17,9 @@ export default function LandingPage() {
   const errorMessage = 'An error occurred. Could not fetch AI sandboxes.';
   
   const landingPageDomains = [
-    'localhost',
     'sandbox.ai.huit.harvard.edu',
     'dev.sandbox.ai.huit.harvard.edu',
     'stage.sandbox.ai.huit.harvard.edu',
-    'qa.sandbox.ai.huit.harvard.edu'
   ];
 
   useEffect(() => {
@@ -106,6 +104,7 @@ export default function LandingPage() {
                             <li key={index}>
                               <a
                                 href={`https://${project}.${getMatchingDomain() || currentHostname}`}
+                                // href={`http://localhost:8000/landing-page`}
                                 tabIndex={0}
                               >
                                 {project}

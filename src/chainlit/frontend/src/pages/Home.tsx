@@ -10,11 +10,9 @@ export default function Home() {
   const hostname = window.location.hostname;
 
   const landingPageDomains = [
-    'localhost',
     'sandbox.ai.huit.harvard.edu',
     'dev.sandbox.ai.huit.harvard.edu',
     'stage.sandbox.ai.huit.harvard.edu',
-    'qa.sandbox.ai.huit.harvard.edu'
   ];
 
   // Check if the hostname matches any of the landing page domains.
