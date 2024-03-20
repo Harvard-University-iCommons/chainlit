@@ -17,9 +17,9 @@ export default function LandingPage() {
   const errorMessage = 'An error occurred. Could not fetch AI sandboxes.';
   
   const landingPageDomains = [
-    'sandbox.ai.huit.harvard.edu',
     'dev.sandbox.ai.huit.harvard.edu',
     'stage.sandbox.ai.huit.harvard.edu',
+    'sandbox.ai.huit.harvard.edu'
   ];
 
   useEffect(() => {
