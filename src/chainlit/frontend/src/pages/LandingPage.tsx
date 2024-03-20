@@ -104,7 +104,6 @@ export default function LandingPage() {
                             <li key={index}>
                               <a
                                 href={`https://${project}.${getMatchingDomain() || currentHostname}`}
-                                // href={`http://localhost:8000/landing-page`}
                                 tabIndex={0}
                               >
                                 {project}

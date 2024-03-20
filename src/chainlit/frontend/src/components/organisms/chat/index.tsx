@@ -1,4 +1,6 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -30,6 +32,7 @@ import ChatSettingsModal from './settings';
 import WelcomeScreen from './welcomeScreen';
 
 const Chat = () => {
+  const navigate = useNavigate();
   const { user, isAuthenticated } = useAuth();
   const session = useRecoilValue(sessionState);
   const askUser = useRecoilValue(askUserState);
@@ -41,6 +44,23 @@ const Chat = () => {
   const setChatHistory = useSetRecoilState(chatHistoryState);
 
   const [autoScroll, setAutoScroll] = useState(true);
+
+  useEffect(() => {
+    const hostname = window.location.hostname;
+
+    const landingPageDomains = [
+      'sandbox.ai.huit.harvard.edu',
+      'dev.sandbox.ai.huit.harvard.edu',
+      'stage.sandbox.ai.huit.harvard.edu',
+    ];
+
+    // Check if the hostname matches any of the landing page domains.
+    const isLandingPage = landingPageDomains.includes(hostname);
+
+    if (isLandingPage) {
+      navigate('/landing-page');
+    }
+  }, [navigate]);
 
   const onSubmit = useCallback(
     async (msg: string) => {
