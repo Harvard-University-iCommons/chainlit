@@ -44,17 +44,17 @@ const Chat = () => {
   const [autoScroll, setAutoScroll] = useState(true);
 
   const exemptHostNames = [
-    'https://p5.sandbox.ai.huit.harvard.edu/',
-    'https://p9.sandbox.ai.huit.harvard.edu/',
-    'https://p10.sandbox.ai.huit.harvard.edu/',
-    'https://p11.sandbox.ai.huit.harvard.edu/',
-    'https://p14.sandbox.ai.huit.harvard.edu/',
-    'https://p16.sandbox.ai.huit.harvard.edu/',
-    'https://p17.sandbox.ai.huit.harvard.edu/',
-    'https://p18.sandbox.ai.huit.harvard.edu/',
-    'https://p19.sandbox.ai.huit.harvard.edu/',
-    'https://p62.sandbox.ai.huit.harvard.edu/',
-    'https://p79.sandbox.ai.huit.harvard.edu/'
+    'p5.sandbox.ai.huit.harvard.edu',
+    'p9.sandbox.ai.huit.harvard.edu',
+    'p10.sandbox.ai.huit.harvard.edu',
+    'p11.sandbox.ai.huit.harvard.edu',
+    'p14.sandbox.ai.huit.harvard.edu',
+    'p16.sandbox.ai.huit.harvard.edu',
+    'p17.sandbox.ai.huit.harvard.edu',
+    'p18.sandbox.ai.huit.harvard.edu',
+    'p19.sandbox.ai.huit.harvard.edu',
+    'p62.sandbox.ai.huit.harvard.edu',
+    'p79.sandbox.ai.huit.harvard.edu'
     // https://p36.sandbox.ai.huit.harvard.edu/ status:ongoing SIP Students
   ];
   const onSubmit = useCallback(
@@ -158,13 +158,15 @@ const Chat = () => {
             />
           </ErrorBoundary>
         )}
-        {!messages.length && !exemptHostNames.includes(window.location.href) ? (
-          <>
+        {!messages.length &&
+        !exemptHostNames.includes(window.location.hostname) ? (
+          <Alert severity="info">
             <Iframe
+              styles={{ border: '0' }}
               title="notification-banner"
               url="https://ai-sandbox-v1-banner.s3.amazonaws.com/index.html"
             ></Iframe>
-          </>
+          </Alert>
         ) : (
           ''
         )}
