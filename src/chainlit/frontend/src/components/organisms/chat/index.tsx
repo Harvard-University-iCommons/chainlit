@@ -1,4 +1,5 @@
 import { useCallback, useState } from 'react';
+import Iframe from 'react-iframe';
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -42,6 +43,20 @@ const Chat = () => {
 
   const [autoScroll, setAutoScroll] = useState(true);
 
+  const exemptHostNames = [
+    'https://p5.sandbox.ai.huit.harvard.edu/',
+    'https://p9.sandbox.ai.huit.harvard.edu/',
+    'https://p10.sandbox.ai.huit.harvard.edu/',
+    'https://p11.sandbox.ai.huit.harvard.edu/',
+    'https://p14.sandbox.ai.huit.harvard.edu/',
+    'https://p16.sandbox.ai.huit.harvard.edu/',
+    'https://p17.sandbox.ai.huit.harvard.edu/',
+    'https://p18.sandbox.ai.huit.harvard.edu/',
+    'https://p19.sandbox.ai.huit.harvard.edu/',
+    'https://p62.sandbox.ai.huit.harvard.edu/',
+    'https://p79.sandbox.ai.huit.harvard.edu/'
+    // https://p36.sandbox.ai.huit.harvard.edu/ status:ongoing SIP Students
+  ];
   const onSubmit = useCallback(
     async (msg: string) => {
       const sessionId = session?.socket.id;
@@ -142,6 +157,16 @@ const Chat = () => {
               setAutoScroll={setAutoScroll}
             />
           </ErrorBoundary>
+        )}
+        {!messages.length && !exemptHostNames.includes(window.location.href) ? (
+          <>
+            <Iframe
+              title="notification-banner"
+              url="https://ai-sandbox-v1-banner.s3.amazonaws.com/index.html"
+            ></Iframe>
+          </>
+        ) : (
+          ''
         )}
         {!messages.length && <WelcomeScreen />}
         <InputBox onReply={onReply} onSubmit={onSubmit} />
