@@ -12,6 +12,7 @@ import ErrorBoundary from 'components/atoms/errorBoundary';
 import TaskList from 'components/molecules/tasklist';
 
 import { useAuth } from 'hooks/auth';
+import useIsDarkMode from 'hooks/useIsDarkMode';
 
 import { actionState } from 'state/action';
 import {
@@ -117,6 +118,7 @@ const Chat = () => {
   );
 
   const tasklist = tasklistElements.at(-1);
+  const isDarkMode = useIsDarkMode();
 
   return (
     <Box
@@ -162,9 +164,13 @@ const Chat = () => {
         !exemptHostNames.includes(window.location.hostname) ? (
           <Alert severity="info">
             <Iframe
-              styles={{ border: '0' }}
+              styles={{ border: '0', width: '75vw' }}
               title="notification-banner"
-              url="https://ai-sandbox-v1-banner.s3.amazonaws.com/index.html"
+              url={
+                isDarkMode
+                  ? 'https://ai-sandbox-v1-banner.s3.amazonaws.com/dark-theme-index.html'
+                  : 'https://ai-sandbox-v1-banner.s3.amazonaws.com/index.html'
+              }
             ></Iframe>
           </Alert>
         ) : (
