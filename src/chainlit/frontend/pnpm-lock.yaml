@@ -56,6 +56,9 @@ dependencies:
   react-hotkeys-hook:
     specifier: ^4.4.0
     version: 4.4.0(react-dom@18.2.0)(react@18.2.0)
+  react-iframe:
+    specifier: ^1.8.5
+    version: 1.8.5(react@18.2.0)
   react-markdown:
     specifier: ^8.0.6
     version: 8.0.6(@types/react@18.0.27)(react@18.2.0)
@@ -5339,6 +5342,15 @@ packages:
     dependencies:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
+    dev: false
+
+  /react-iframe@1.8.5(react@18.2.0):
+    resolution: {integrity: sha512-F4cQJGs3ydaG6fJWfuz9yLwOU0Trzl6kttXuUG+vYwosH8enOOFxZWEDQCSbNVO8ayjfYZeqLxEvdvcsSy4GvA==}
+    peerDependencies:
+      react: '>=16.x.x'
+    dependencies:
+      object-assign: 4.1.1
+      react: 18.2.0
     dev: false
 
   /react-is@16.13.1:

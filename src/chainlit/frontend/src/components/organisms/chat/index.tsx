@@ -1,4 +1,5 @@
 import { useCallback, useState } from 'react';
+import Iframe from 'react-iframe';
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -11,6 +12,7 @@ import ErrorBoundary from 'components/atoms/errorBoundary';
 import TaskList from 'components/molecules/tasklist';
 
 import { useAuth } from 'hooks/auth';
+import useIsDarkMode from 'hooks/useIsDarkMode';
 
 import { actionState } from 'state/action';
 import {
@@ -42,6 +44,20 @@ const Chat = () => {
 
   const [autoScroll, setAutoScroll] = useState(true);
 
+  const exemptHostNames = [
+    'p5.sandbox.ai.huit.harvard.edu',
+    'p9.sandbox.ai.huit.harvard.edu',
+    'p10.sandbox.ai.huit.harvard.edu',
+    'p11.sandbox.ai.huit.harvard.edu',
+    'p14.sandbox.ai.huit.harvard.edu',
+    'p16.sandbox.ai.huit.harvard.edu',
+    'p17.sandbox.ai.huit.harvard.edu',
+    'p18.sandbox.ai.huit.harvard.edu',
+    'p19.sandbox.ai.huit.harvard.edu',
+    'p62.sandbox.ai.huit.harvard.edu',
+    'p79.sandbox.ai.huit.harvard.edu'
+    // https://p36.sandbox.ai.huit.harvard.edu/ status:ongoing SIP Students
+  ];
   const onSubmit = useCallback(
     async (msg: string) => {
       const sessionId = session?.socket.id;
@@ -102,6 +118,7 @@ const Chat = () => {
   );
 
   const tasklist = tasklistElements.at(-1);
+  const isDarkMode = useIsDarkMode();
 
   return (
     <Box
@@ -142,6 +159,22 @@ const Chat = () => {
               setAutoScroll={setAutoScroll}
             />
           </ErrorBoundary>
+        )}
+        {!messages.length &&
+        !exemptHostNames.includes(window.location.hostname) ? (
+          <Alert severity="info">
+            <Iframe
+              styles={{ border: '0', width: '75vw' }}
+              title="notification-banner"
+              url={
+                isDarkMode
+                  ? 'https://ai-sandbox-v1-banner.s3.amazonaws.com/dark-theme-index.html'
+                  : 'https://ai-sandbox-v1-banner.s3.amazonaws.com/index.html'
+              }
+            ></Iframe>
+          </Alert>
+        ) : (
+          ''
         )}
         {!messages.length && <WelcomeScreen />}
         <InputBox onReply={onReply} onSubmit={onSubmit} />
